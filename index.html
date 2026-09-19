@@ -1,0 +1,1555 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>విద్యార్థినిధి - సమగ్ర తెలుగు విద్యా వేదిక</title>
+  
+  <!-- Modern Google Fonts for Telugu & Kids UI -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+Tamma+2:wght@500;600;700;800&family=Mandali&family=Ramabhadra&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* -------------------------------------------------------------
+       1. VIBRANT 7 RAINBOW THEME & DESIGN TOKENS
+       ------------------------------------------------------------- */
+    :root {
+      --violet: #8b5cf6;
+      --indigo: #4f46e5;
+      --blue: #0284c7;
+      --green: #10b981;
+      --yellow: #f59e0b;
+      --orange: #f97316;
+      --red: #ef4444;
+      --pink: #ec4899;
+
+      --rainbow-gradient: linear-gradient(90deg, #ef4444, #f97316, #f59e0b, #10b981, #0284c7, #4f46e5, #8b5cf6);
+      --bg-canvas: #f8fafc;
+      --text-main: #0f172a;
+      --text-soft: #475569;
+      --shadow-soft: 0 8px 20px -4px rgba(0, 0, 0, 0.06), 0 6px 8px -4px rgba(0, 0, 0, 0.03);
+      --shadow-hover: 0 16px 30px -5px rgba(2, 132, 199, 0.15);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Baloo Tamma 2', 'Mandali', sans-serif; }
+    
+    body {
+      background-color: var(--bg-canvas);
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(244, 63, 94, 0.08) 0px, transparent 50%),
+        radial-gradient(at 100% 0%, rgba(139, 92, 246, 0.08) 0px, transparent 50%),
+        radial-gradient(at 50% 100%, rgba(16, 185, 129, 0.08) 0px, transparent 50%);
+      color: var(--text-main);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Top Rainbow Strip */
+    .rainbow-header-strip {
+      height: 6px;
+      background: var(--rainbow-gradient);
+      background-size: 300% 100%;
+      animation: rainbowShift 6s linear infinite;
+    }
+    @keyframes rainbowShift { 0% { background-position: 0% 50%; } 100% { background-position: 300% 50%; } }
+
+    /* Header Structure */
+    header {
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 4px 18px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 99;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .header-top {
+      max-width: 1380px;
+      margin: 0 auto;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    /* SECRET TRIGGER: Triple-click on the brand area to unlock secret admin */
+    .brand-wrap {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      cursor: pointer;
+      user-select: none;
+    }
+    .brand-emblem {
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, #ef4444, #f59e0b, #0284c7);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      box-shadow: 0 6px 16px rgba(239, 68, 68, 0.25);
+      transition: transform 0.2s;
+    }
+    .brand-wrap:active .brand-emblem { transform: scale(0.95); }
+    .brand-title-box h1 {
+      font-family: 'Ramabhadra', sans-serif;
+      font-size: 26px;
+      background: linear-gradient(135deg, #1e3a8a, #7c3aed, #db2777);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1.2;
+    }
+    .brand-title-box p {
+      font-size: 13px;
+      font-weight: 700;
+      color: #0284c7;
+    }
+
+    /* -------------------------------------------------------------
+       2. HEADINGS NAVIGATION (ALL 9 VISIBLE, BALANCED & COMPACT)
+       ------------------------------------------------------------- */
+    .nav-wrapper {
+      background: #ffffff;
+      border-top: 1px solid #f1f5f9;
+      padding: 6px 12px;
+    }
+    .nav-bar {
+      max-width: 1380px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 6px;
+    }
+    .nav-tab {
+      padding: 6px 12px;
+      border-radius: 12px;
+      border: 1.5px solid transparent;
+      background: #f8fafc;
+      color: #475569;
+      font-size: 13.5px;
+      font-weight: 800;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .nav-tab i { font-size: 13px; }
+    .nav-tab:hover {
+      background: #f1f5f9;
+      color: #0f172a;
+      transform: translateY(-1px);
+    }
+    
+    /* 7-Rainbow Dedicated Accents for active tabs */
+    .nav-tab.active[data-target="mungili"] { background: #fee2e2; border-color: #ef4444; color: #b91c1c; }
+    .nav-tab.active[data-target="textbooks"] { background: #ffedd5; border-color: #f97316; color: #c2410c; }
+    .nav-tab.active[data-target="digital"] { background: #fef3c7; border-color: #f59e0b; color: #b45309; }
+    .nav-tab.active[data-target="grammar"] { background: #dcfce7; border-color: #10b981; color: #15803d; }
+    .nav-tab.active[data-target="exams"] { background: #e0f2fe; border-color: #0284c7; color: #0369a1; }
+    .nav-tab.active[data-target="quiz"] { background: #e0e7ff; border-color: #4f46e5; color: #3730a3; }
+    .nav-tab.active[data-target="projects"] { background: #f3e8ff; border-color: #8b5cf6; color: #6d28d9; }
+    .nav-tab.active[data-target="additional"] { background: #fce7f3; border-color: #ec4899; color: #be185d; }
+    .nav-tab.active[data-target="about"] { background: #ccfbf1; border-color: #14b8a6; color: #0f766e; }
+
+    /* Admin Floating Toolbar (Only visible after successful login) */
+    #adminControlBar {
+      display: none;
+      background: linear-gradient(135deg, #1e1b4b, #31104b);
+      color: white;
+      padding: 10px 20px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+    }
+    .admin-bar-inner {
+      max-width: 1380px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .btn-admin-add {
+      background: linear-gradient(135deg, #10b981, #059669);
+      color: white;
+      border: none;
+      padding: 7px 16px;
+      border-radius: 10px;
+      font-weight: 800;
+      font-size: 13.5px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .btn-admin-key {
+      background: #f59e0b;
+      color: white;
+      border: none;
+      padding: 7px 14px;
+      border-radius: 10px;
+      font-weight: 800;
+      font-size: 13px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .btn-admin-logout {
+      background: #ef4444;
+      color: white;
+      border: none;
+      padding: 7px 14px;
+      border-radius: 10px;
+      font-weight: 800;
+      font-size: 13px;
+      cursor: pointer;
+    }
+
+    /* -------------------------------------------------------------
+       3. MAIN VIEWPORTS & CARDS
+       ------------------------------------------------------------- */
+    main {
+      max-width: 1380px;
+      margin: 22px auto;
+      padding: 0 16px;
+      min-height: 75vh;
+    }
+
+    .tab-view {
+      display: none;
+      animation: fadeInPage 0.25s ease-out;
+    }
+    .tab-view.active { display: block; }
+    @keyframes fadeInPage { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* Class Filter Pills */
+    .class-selector-box {
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 10px 14px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 22px;
+      box-shadow: var(--shadow-soft);
+      border: 1.5px solid #e2e8f0;
+    }
+    .pill-filter {
+      padding: 7px 16px;
+      border-radius: 30px;
+      border: 1.5px solid #e2e8f0;
+      background: #f8fafc;
+      color: #475569;
+      font-size: 13.5px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .pill-filter:hover {
+      border-color: #0284c7;
+      background: #f0f9ff;
+      color: #0284c7;
+    }
+    .pill-filter.active {
+      background: linear-gradient(135deg, #0284c7, #4f46e5);
+      border-color: transparent;
+      color: white;
+      box-shadow: 0 4px 12px rgba(2, 132, 199, 0.35);
+    }
+
+    /* Dynamic Resource Cards Grid */
+    .cards-flow-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+      gap: 20px;
+    }
+    .res-card-box {
+      background: white;
+      border-radius: 20px;
+      padding: 20px;
+      border: 2px solid #eef2f6;
+      box-shadow: var(--shadow-soft);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.25s ease;
+    }
+    .res-card-box:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-hover);
+      border-color: #38bdf8;
+    }
+    .res-card-box::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 5px;
+      background: var(--rainbow-gradient);
+    }
+    .type-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 10px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 800;
+      width: fit-content;
+      margin-bottom: 12px;
+    }
+    .type-pdf { background: #fee2e2; color: #dc2626; }
+    .type-video { background: #ffedd5; color: #ea580c; }
+    .type-ppt { background: #fef3c7; color: #b45309; }
+    .type-image { background: #e0f2fe; color: #0284c7; }
+    .type-link { background: #f3e8ff; color: #7c3aed; }
+
+    .card-title-text {
+      font-size: 17px;
+      font-weight: 800;
+      color: #0f172a;
+      line-height: 1.4;
+      margin-bottom: 8px;
+    }
+    .card-desc-text {
+      font-size: 13.5px;
+      color: #64748b;
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+    .card-btn-row {
+      display: flex;
+      gap: 8px;
+      margin-top: auto;
+    }
+    .btn-view-style {
+      flex: 1;
+      padding: 9px 12px;
+      border-radius: 10px;
+      background: #eff6ff;
+      color: #0284c7;
+      border: 1.5px solid #bfdbfe;
+      font-weight: 800;
+      font-size: 13px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .btn-view-style:hover { background: #0284c7; color: white; }
+    .btn-down-style {
+      flex: 1;
+      padding: 9px 12px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #10b981, #059669);
+      color: white;
+      border: none;
+      font-weight: 800;
+      font-size: 13px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.2s;
+      box-shadow: 0 4px 10px rgba(16, 185, 129, 0.25);
+    }
+    .btn-down-style:hover { transform: scale(1.02); }
+    .btn-del-style {
+      background: #fee2e2;
+      color: #dc2626;
+      border: none;
+      padding: 9px 12px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 13px;
+    }
+    .btn-del-style:hover { background: #fca5a5; }
+
+    /* -------------------------------------------------------------
+       4. SUPER SOUND ENGINE & WORDS LAB (అదనపు సమాచారం)
+       ------------------------------------------------------------- */
+    .sound-lab-wrapper {
+      background: white;
+      border-radius: 24px;
+      padding: 26px;
+      border: 2px solid #e0e7ff;
+      box-shadow: var(--shadow-soft);
+    }
+    .sound-control-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding-bottom: 16px;
+      border-bottom: 2px dashed #e2e8f0;
+    }
+    .live-visualizer {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      height: 32px;
+      background: #f1f5f9;
+      padding: 6px 14px;
+      border-radius: 20px;
+    }
+    .wave-stick {
+      width: 5px;
+      height: 8px;
+      border-radius: 6px;
+      background: #cbd5e1;
+      transition: height 0.1s ease;
+    }
+    .live-visualizer.speaking .wave-stick {
+      background: linear-gradient(180deg, #ef4444, #f59e0b, #10b981, #0284c7);
+      animation: waveBeat 0.5s infinite alternate ease-in-out;
+    }
+    .wave-stick:nth-child(1) { animation-delay: 0.1s; }
+    .wave-stick:nth-child(2) { animation-delay: 0.3s; }
+    .wave-stick:nth-child(3) { animation-delay: 0.5s; }
+    .wave-stick:nth-child(4) { animation-delay: 0.2s; }
+    .wave-stick:nth-child(5) { animation-delay: 0.4s; }
+    @keyframes waveBeat { 0% { height: 6px; } 100% { height: 26px; } }
+
+    .word-cards-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(145px, 1fr));
+      gap: 12px;
+      margin-top: 18px;
+    }
+    .sound-word-card {
+      background: #f8fafc;
+      border-radius: 16px;
+      padding: 12px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border: 2px solid #e2e8f0;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      user-select: none;
+    }
+    .sound-word-card:hover {
+      transform: translateY(-3px) scale(1.02);
+      border-color: #38bdf8;
+      background: #f0f9ff;
+      box-shadow: 0 6px 16px rgba(2, 132, 199, 0.16);
+    }
+    .sound-word-card:active {
+      transform: scale(0.97);
+    }
+    .sound-word-card.playing {
+      border-color: #10b981;
+      background: #dcfce7;
+      box-shadow: 0 0 16px rgba(16, 185, 129, 0.4);
+    }
+    .sound-text-label {
+      font-size: 19px;
+      font-weight: 800;
+      color: #1e293b;
+    }
+    .sound-icon-bubble {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #0284c7, #2563eb);
+      color: white;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      box-shadow: 0 3px 8px rgba(2, 132, 199, 0.3);
+    }
+
+    /* -------------------------------------------------------------
+       5. HERO & PROFILE STYLES
+       ------------------------------------------------------------- */
+    .hero-glass-box {
+      background: linear-gradient(135deg, #1e3a8a, #4338ca, #7c3aed);
+      border-radius: 24px;
+      padding: 34px;
+      color: white;
+      box-shadow: 0 15px 35px rgba(30, 58, 138, 0.25);
+      margin-bottom: 26px;
+      border: 3px solid rgba(255,255,255,0.18);
+    }
+    .hero-glass-box h2 {
+      font-family: 'Ramabhadra', sans-serif;
+      font-size: 28px;
+      margin-bottom: 12px;
+    }
+    .hero-glass-box p {
+      font-size: 16px;
+      line-height: 1.8;
+      opacity: 0.95;
+      max-width: 950px;
+    }
+    .purpose-grid-modern {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 18px;
+    }
+    .purpose-box {
+      background: white;
+      border-radius: 20px;
+      padding: 20px;
+      border: 1.5px solid #e2e8f0;
+      box-shadow: var(--shadow-soft);
+      border-top: 5px solid var(--blue);
+      transition: transform 0.2s;
+    }
+    .purpose-box:hover { transform: translateY(-4px); }
+    .purpose-box h3 { font-size: 17px; font-weight: 800; color: #1e293b; margin-bottom: 8px; }
+    .purpose-box p { font-size: 13.5px; color: #64748b; line-height: 1.6; }
+
+    /* Teacher Profile */
+    .profile-card-layout {
+      background: white;
+      border-radius: 24px;
+      padding: 32px;
+      box-shadow: var(--shadow-soft);
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 30px;
+      align-items: center;
+      border: 2px solid #e2e8f0;
+    }
+    .profile-avatar-box {
+      width: 190px;
+      height: 190px;
+      border-radius: 22px;
+      background: linear-gradient(135deg, #4f46e5, #7c3aed, #db2777);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 12px 25px rgba(99, 102, 241, 0.3);
+    }
+    .profile-avatar-box i { font-size: 60px; margin-bottom: 8px; }
+    .profile-data-table { width: 100%; border-collapse: collapse; margin-top: 14px; }
+    .profile-data-table td { padding: 9px 6px; border-bottom: 1px solid #f1f5f9; font-size: 15.5px; }
+    .profile-data-table td:first-child { font-weight: 800; color: #64748b; width: 150px; }
+
+    /* -------------------------------------------------------------
+       6. POPUP MODALS
+       ------------------------------------------------------------- */
+    .modal-veil {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.65);
+      backdrop-filter: blur(5px);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+    .modal-veil.open { display: flex; }
+    .modal-window {
+      background: white;
+      border-radius: 22px;
+      width: 100%;
+      max-width: 500px;
+      padding: 28px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+      max-height: 90vh;
+      overflow-y: auto;
+      border: 3px solid #f1f5f9;
+    }
+    .modal-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; }
+    .modal-close { background: #f1f5f9; border: none; width: 34px; height: 34px; border-radius: 50%; font-size: 16px; cursor: pointer; }
+    
+    .field-wrap { margin-bottom: 15px; }
+    .field-wrap label { display: block; font-weight: 800; font-size: 13.5px; margin-bottom: 6px; }
+    .field-input {
+      width: 100%;
+      padding: 11px 14px;
+      border-radius: 10px;
+      border: 1.5px solid #cbd5e1;
+      font-size: 14px;
+      outline: none;
+    }
+    .field-input:focus { border-color: #0284c7; }
+    .btn-dialog-submit {
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(135deg, #0284c7, #4f46e5);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    /* Footer Dot Trigger */
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 13px;
+      color: #64748b;
+      margin-top: 30px;
+      border-top: 1px solid #e2e8f0;
+      background: white;
+    }
+    .secret-dot {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: transparent;
+      cursor: default;
+      margin-left: 6px;
+    }
+
+    @media (max-width: 768px) {
+      .profile-card-layout { grid-template-columns: 1fr; text-align: center; }
+      .profile-avatar-box { margin: 0 auto; width: 160px; height: 160px; }
+      .profile-data-table td { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Rainbow Running Strip -->
+  <div class="rainbow-header-strip"></div>
+
+  <!-- Header -->
+  <header>
+    <div class="header-top">
+      <!-- SECRET ENTRY 1: Triple-clicking here opens Admin Login -->
+      <div class="brand-wrap" id="secretLogoTrigger" title="విద్యార్థినిధి">
+        <div class="brand-emblem"><i class="fa-solid fa-graduation-cap"></i></div>
+        <div class="brand-title-box">
+          <h1>విద్యార్థినిధి</h1>
+          <p><i class="fa-solid fa-sparkles"></i> తెలుగు విద్యా వేదిక • ZPHS అనాజీపూర్</p>
+        </div>
+      </div>
+      <!-- No visible login button exists for public visitors -->
+    </div>
+
+    <!-- 9 All-Visible Compact Headings -->
+    <div class="nav-wrapper">
+      <nav class="nav-bar">
+        <button class="nav-tab active" data-target="mungili" onclick="switchMainTab('mungili')">
+          <i class="fa-solid fa-house" style="color:var(--red);"></i> ముంగిలి
+        </button>
+        <button class="nav-tab" data-target="textbooks" onclick="switchMainTab('textbooks')">
+          <i class="fa-solid fa-book" style="color:var(--orange);"></i> పాఠ్య పుస్తకాలు
+        </button>
+        <button class="nav-tab" data-target="digital" onclick="switchMainTab('digital')">
+          <i class="fa-solid fa-laptop-code" style="color:var(--yellow);"></i> డిజిటల్ పాఠాలు
+        </button>
+        <button class="nav-tab" data-target="grammar" onclick="switchMainTab('grammar')">
+          <i class="fa-solid fa-spell-check" style="color:var(--green);"></i> వ్యాకరణం
+        </button>
+        <button class="nav-tab" data-target="exams" onclick="switchMainTab('exams')">
+          <i class="fa-solid fa-file-pen" style="color:var(--blue);"></i> మాదిరి ప్రశ్నలు & పరీక్షలు
+        </button>
+        <button class="nav-tab" data-target="quiz" onclick="switchMainTab('quiz')">
+          <i class="fa-solid fa-circle-question" style="color:var(--indigo);"></i> క్విజ్
+        </button>
+        <button class="nav-tab" data-target="projects" onclick="switchMainTab('projects')">
+          <i class="fa-solid fa-diagram-project" style="color:var(--violet);"></i> ప్రాజెక్టులు & సమీక్షలు
+        </button>
+        <button class="nav-tab" data-target="additional" onclick="switchMainTab('additional')">
+          <i class="fa-solid fa-volume-high" style="color:var(--pink);"></i> అదనపు సమాచారం
+        </button>
+        <button class="nav-tab" data-target="about" onclick="switchMainTab('about')">
+          <i class="fa-solid fa-user-tie" style="color:#0f766e;"></i> నా గురించి
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Admin Mode Action Bar (Only visible when verified) -->
+  <div id="adminControlBar">
+    <div class="admin-bar-inner">
+      <div style="font-weight:800; font-size:14px;">
+        <i class="fa-solid fa-shield-halved" style="color:#4ade80; margin-right:6px;"></i>
+        అడ్మిన్ డ్యాష్‌బోర్డ్: బి. ప్రవీణ్ కుమార్ గారు (లాగిన్ అయ్యారు)
+      </div>
+      <div style="display:flex; gap:10px; flex-wrap:wrap;">
+        <button class="btn-admin-add" onclick="openUploadFormModal()">
+          <i class="fa-solid fa-cloud-arrow-up"></i> కొత్త ఫైల్ / లింక్ అప్‌లోడ్ చేయండి
+        </button>
+        <button class="btn-admin-key" onclick="openChangePinModal()">
+          <i class="fa-solid fa-key"></i> పిన్ మార్చండి
+        </button>
+        <button class="btn-admin-logout" onclick="performAdminLogout()">లాగౌట్</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Viewports -->
+  <main>
+
+    <!-- 1. ముంగిలి -->
+    <section id="view-mungili" class="tab-view active">
+      <div class="hero-glass-box">
+        <h2>ఉపాధ్యాయ మిత్రులకు, విద్యార్థులకు నమస్కారం!</h2>
+        <p>
+          "విద్యార్థినిధి" వెబ్ వేదికకు హృదయపూర్వక స్వాగతం. తెలుగు భాషాభివృద్ధి, సమగ్ర డిజిటల్ విద్యా బోధన, మరియు ఆధునిక సాంకేతికతతో కూడిన అభ్యసనాన్ని ప్రతి విద్యార్థికి ఉచితంగా అందించడమే ఈ పోర్టల్ యొక్క ప్రధాన ఉద్దేశం. 6వ తరగతి నుండి 10వ తరగతి వరకు అవసరమైన పాఠ్యపుస్తకాలు, డిజిటల్ దృశ్య-శ్రవణ పాఠాలు, పరీక్షా నమూనాలు మరియు అక్షర-పద శబ్దోచ్ఛారణా సాధనలు ఇక్కడ నిక్షిప్తం చేయబడ్డాయి.
+        </p>
+      </div>
+
+      <div class="purpose-grid-modern">
+        <div class="purpose-box" style="border-top-color:var(--red);">
+          <h3><i class="fa-solid fa-book-open" style="color:var(--red);"></i> సమగ్ర పాఠ్య వనరులు</h3>
+          <p>6 నుండి 10వ తరగతుల తెలుగు పాఠ్యపుస్తకాలు, స్టడీ మెటీరియల్స్ మరియు పీడీఎఫ్‌లు నిక్షిప్తం చేయబడ్డాయి.</p>
+        </div>
+        <div class="purpose-box" style="border-top-color:var(--yellow);">
+          <h3><i class="fa-solid fa-laptop-code" style="color:var(--yellow);"></i> డిజిటల్ దృశ్య పాఠాలు</h3>
+          <p>యూట్యూబ్ మరియు స్మార్ట్ బోర్డ్ ద్వారా యానిమేటెడ్ పాఠ్యాంశాలు మరియు విశ్లేషణలు సులభంగా అర్థమవుతాయి.</p>
+        </div>
+        <div class="purpose-box" style="border-top-color:var(--pink);">
+          <h3><i class="fa-solid fa-volume-high" style="color:var(--pink);"></i> స్పష్టమైన శబ్దోచ్ఛారణ</h3>
+          <p>ఈగ, అమ్మ, ఆవు మొదలైన వందలాది పదాలను క్లిక్ చేయగానే నేరుగా శబ్దంతో పలికే అత్యాధునిక ధ్వని వ్యవస్థ.</p>
+        </div>
+        <div class="purpose-box" style="border-top-color:var(--indigo);">
+          <h3><i class="fa-solid fa-trophy" style="color:var(--indigo);"></i> క్విజ్ & పరీక్షలు</h3>
+          <p>రామాయణం, తెలుగు వ్యాకరణం మరియు తరగతుల వారీగా ప్రశ్నాపత్రాలు, ప్రాజెక్ట్ పనులు అందుబాటులో ఉంటాయి.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. పాఠ్య పుస్తకాలు -->
+    <section id="view-textbooks" class="tab-view">
+      <div class="class-selector-box" data-section="textbooks">
+        <button class="pill-filter active" onclick="setSectionGrade('textbooks', 'all')">అన్నీ</button>
+        <button class="pill-filter" onclick="setSectionGrade('textbooks', '6')">6వ తరగతి</button>
+        <button class="pill-filter" onclick="setSectionGrade('textbooks', '7')">7వ తరగతి</button>
+        <button class="pill-filter" onclick="setSectionGrade('textbooks', '8')">8వ తరగతి</button>
+        <button class="pill-filter" onclick="setSectionGrade('textbooks', '9')">9వ తరగతి</button>
+        <button class="pill-filter" onclick="setSectionGrade('textbooks', '10')">10వ తరగతి</button>
+      </div>
+      <div class="cards-flow-grid" id="grid-textbooks"></div>
+    </section>
+
+    <!-- 3. డిజిటల్ పాఠాలు -->
+    <section id="view-digital" class="tab-view">
+      <div class="class-selector-box" data-section="digital">
+        <button class="pill-filter active" onclick="setSectionGrade('digital', 'all')">అన్నీ</button>
+        <button class="pill-filter" onclick="setSectionGrade('digital', '6')">6వ తరగతి</button>
+        <button class="pill-filter" onclick="setSectionGrade('digital', '7')">7వ తరగతి</button>
+        <button class="pill-filter" onclick="setSectionGrade('digital', '8')">8వ తరగతి</button>
+        <button class="pill-filter" onclick="setSectionGrade('digital', '9')">9వ తరగతి</button>
+        <button class="pill-filter" onclick="setSectionGrade('digital', '10')">10వ తరగతి</button>
+      </div>
+      <div class="cards-flow-grid" id="grid-digital"></div>
+    </section>
+
+    <!-- 4. వ్యాకరణం -->
+    <section id="view-grammar" class="tab-view">
+      <div class="class-selector-box" data-section="grammar">
+        <button class="pill-filter active" onclick="setSectionGrade('grammar', 'all')">అన్నీ</button>
+        <button class="pill-filter" onclick="setSectionGrade('grammar', '6')">6వ తరగతి</button>
+        <button class="pill-filter" onclick="setSectionGrade('grammar', '7')">7వ తరగతి</button>
+        <button class="pill-filter" onclick="setSectionGrade('grammar', '8')">8వ తరగతి</button>
+        <button class="pill-filter" onclick="setSectionGrade('grammar', '9')">9వ తరగతి</button>
+        <button class="pill-filter" onclick="setSectionGrade('grammar', '10')">10వ తరగతి</button>
+      </div>
+      <div class="cards-flow-grid" id="grid-grammar"></div>
+    </section>
+
+    <!-- 5. మాదిరి ప్రశ్నలు & పరీక్షలు -->
+    <section id="view-exams" class="tab-view">
+      <div class="class-selector-box" data-section="exams">
+        <button class="pill-filter active" onclick="setSectionGrade('exams', 'all')">అన్నీ</button>
+        <button class="pill-filter" onclick="setSectionGrade('exams', '6')">6వ తరగతి</button>
+        <button class="pill-filter" onclick="setSectionGrade('exams', '7')">7వ తరగతి</button>
+        <button class="pill-filter" onclick="setSectionGrade('exams', '8')">8వ తరగతి</button>
+        <button class="pill-filter" onclick="setSectionGrade('exams', '9')">9వ తరగతి</button>
+        <button class="pill-filter" onclick="setSectionGrade('exams', '10')">10వ తరగతి</button>
+      </div>
+      <div class="cards-flow-grid" id="grid-exams"></div>
+    </section>
+
+    <!-- 6. క్విజ్ (Quiz) -->
+    <section id="view-quiz" class="tab-view">
+      <div class="class-selector-box" data-section="quiz">
+        <button class="pill-filter active" onclick="setSectionGrade('quiz', 'all')">అన్నీ</button>
+        <button class="pill-filter" onclick="setSectionGrade('quiz', '6')">6వ తరగతి</button>
+        <button class="pill-filter" onclick="setSectionGrade('quiz', '7')">7వ తరగతి</button>
+        <button class="pill-filter" onclick="setSectionGrade('quiz', '8')">8వ తరగతి</button>
+        <button class="pill-filter" onclick="setSectionGrade('quiz', '9')">9వ తరగతి</button>
+        <button class="pill-filter" onclick="setSectionGrade('quiz', '10')">10వ తరగతి</button>
+        <button class="pill-filter" onclick="setSectionGrade('quiz', 'ramayanam')">రామాయణం</button>
+        <button class="pill-filter" onclick="setSectionGrade('quiz', 'grammar_quiz')">వ్యాకరణం</button>
+      </div>
+      <div class="cards-flow-grid" id="grid-quiz"></div>
+    </section>
+
+    <!-- 7. ప్రాజెక్టులు & సమీక్షలు -->
+    <section id="view-projects" class="tab-view">
+      <div class="class-selector-box" data-section="projects">
+        <button class="pill-filter active" onclick="setSectionGrade('projects', 'all')">అన్నీ</button>
+        <button class="pill-filter" onclick="setSectionGrade('projects', '6')">6వ తరగతి</button>
+        <button class="pill-filter" onclick="setSectionGrade('projects', '7')">7వ తరగతి</button>
+        <button class="pill-filter" onclick="setSectionGrade('projects', '8')">8వ తరగతి</button>
+        <button class="pill-filter" onclick="setSectionGrade('projects', '9')">9వ తరగతి</button>
+        <button class="pill-filter" onclick="setSectionGrade('projects', '10')">10వ తరగతి</button>
+      </div>
+      <div class="cards-flow-grid" id="grid-projects"></div>
+    </section>
+
+    <!-- 8. అదనపు సమాచారం & శబ్దోచ్ఛారణ ల్యాబ్ -->
+    <section id="view-additional" class="tab-view">
+      <div class="class-selector-box" data-section="additional">
+        <button class="pill-filter active" onclick="setSectionGrade('additional', 'all')">అప్‌లోడ్ ఫైల్స్ (అన్నీ)</button>
+        <button class="pill-filter" onclick="setSectionGrade('additional', '6')">6వ తరగతి</button>
+        <button class="pill-filter" onclick="setSectionGrade('additional', '7')">7వ తరగతి</button>
+        <button class="pill-filter" onclick="setSectionGrade('additional', '8')">8వ తరగతి</button>
+        <button class="pill-filter" onclick="setSectionGrade('additional', '9')">9వ తరగతి</button>
+        <button class="pill-filter" onclick="setSectionGrade('additional', '10')">10వ తరగతి</button>
+      </div>
+      <div class="cards-flow-grid" id="grid-additional" style="margin-bottom:26px;"></div>
+
+      <div class="sound-lab-wrapper">
+        <div class="sound-control-header">
+          <div>
+            <h2 style="font-family:'Ramabhadra'; font-size:24px; color:#1e1b4b;">
+              <i class="fa-solid fa-volume-high" style="color:var(--pink);"></i> తెలుగు శబ్దోచ్ఛారణ సాధన
+            </h2>
+            <p style="color:#64748b; font-size:14px; font-weight:700;">ఏ పదం నొక్కినా తక్షణమే స్పష్టమైన తెలుగు ధ్వనితో పలుకుతుంది!</p>
+          </div>
+          <div class="live-visualizer" id="waveVisualizer">
+            <span style="font-size:12px; font-weight:800; color:#0284c7; margin-right:4px;">ధ్వని తరంగాలు:</span>
+            <div class="wave-stick"></div>
+            <div class="wave-stick"></div>
+            <div class="wave-stick"></div>
+            <div class="wave-stick"></div>
+            <div class="wave-stick"></div>
+          </div>
+        </div>
+
+        <div style="display:flex; gap:8px; flex-wrap:wrap; margin:16px 0;">
+          <button class="pill-filter active" onclick="loadWordsByType('achulu')">అచ్చులు & పదాలు (ఈగ, అమ్మ, ఆవు...)</button>
+          <button class="pill-filter" onclick="loadWordsByType('hallulu')">హల్లులు & పదాలు (కలము, ఘటము...)</button>
+          <button class="pill-filter" onclick="loadWordsByType('sarala')">సరళ పదాలు (అరక, పడవ...)</button>
+          <button class="pill-filter" onclick="loadWordsByType('dvitva')">ద్విత్వ పదాలు (అక్క, కప్ప...)</button>
+          <button class="pill-filter" onclick="loadWordsByType('samyukta')">సంయుక్త పదాలు (పుస్తకం, విజ్ఞానం...)</button>
+          <button class="pill-filter" onclick="loadWordsByType('varnamala')">వర్ణమాల (అ నుండి ఱ వరకు)</button>
+        </div>
+
+        <div class="word-cards-container" id="wordCardsBox"></div>
+      </div>
+    </section>
+
+    <!-- 9. నా గురించి -->
+    <section id="view-about" class="tab-view">
+      <div class="profile-card-layout">
+        <div class="profile-avatar-box">
+          <i class="fa-solid fa-chalkboard-user"></i>
+          <span style="font-weight:800; font-size:15px; margin-top:4px;">తెలుగు పండితులు</span>
+        </div>
+        <div>
+          <h2 style="font-family:'Ramabhadra'; font-size:28px; color:#1e1b4b; margin-bottom:4px;">బి. ప్రవీణ్ కుమార్</h2>
+          <p style="color:#0284c7; font-weight:800; font-size:16px;">స్కూల్ అసిస్టెంట్ (తెలుగు)</p>
+
+          <table class="profile-data-table">
+            <tr>
+              <td><i class="fa-solid fa-school" style="color:var(--orange); margin-right:6px;"></i> పాఠశాల:</td>
+              <td>జిల్లా పరిషత్ ఉన్నత పాఠశాల (ZPHS), అనాజీపూర్, రాయపోల్ మండలం, సిద్దిపేట జిల్లా.</td>
+            </tr>
+            <tr>
+              <td><i class="fa-solid fa-graduation-cap" style="color:var(--violet); margin-right:6px;"></i> విద్యార్హతలు:</td>
+              <td><strong>M.A., B.Ed.</strong> (తెలుగు భాష & సాహిత్యం)</td>
+            </tr>
+            <tr>
+              <td><i class="fa-solid fa-phone" style="color:var(--green); margin-right:6px;"></i> ఫోన్ నంబర్:</td>
+              <td><a href="tel:9908331738" style="color:#0284c7; font-weight:800; text-decoration:none;">9908331738</a></td>
+            </tr>
+            <tr>
+              <td><i class="fa-solid fa-feather-pointed" style="color:var(--yellow); margin-right:6px;"></i> ప్రత్యేకతలు:</td>
+              <td>పద్యాలు, ఆధునిక కవిత్వాలు రాయడం, విద్యార్థుల కోసం ప్రేరణాత్మక పాటలు & గేయాలు రచించడం.</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>© విద్యార్థినిధి - తెలుగు విద్యా విజ్ఞాన సర్వస్వం. సర్వహక్కులు ప్రత్యేకించబడినవి.
+      <!-- SECRET ENTRY 2: Clicking this tiny dot opens Admin Login -->
+      <span class="secret-dot" onclick="openAdminSecurityModal()" title=""></span>
+    </p>
+  </footer>
+
+  <!-- Secret Login Modal (Strictly No PIN Leaks) -->
+  <div class="modal-veil" id="adminAuthVeil">
+    <div class="modal-window" style="max-width:380px; text-align:center;">
+      <div class="modal-head">
+        <h3 style="color:#1e1b4b; font-size:18px;"><i class="fa-solid fa-lock" style="color:#f59e0b;"></i> నిర్వాహకుల లాగిన్</h3>
+        <button class="modal-close" onclick="closeAdminSecurityModal()">&times;</button>
+      </div>
+      <p style="color:#64748b; font-size:13.5px; margin-bottom:18px;">
+        రహస్య పిన్ కోడ్ నమోదు చేయండి.
+      </p>
+      <div class="field-wrap" style="text-align:left;">
+        <label>సెక్యూరిటీ పిన్ (PIN)</label>
+        <input type="password" id="adminSecretPinInput" class="field-input" placeholder="రహస్య పిన్ ఎంటర్ చేయండి" autocomplete="off" />
+      </div>
+      <button class="btn-dialog-submit" onclick="validateAdminPin()"><i class="fa-solid fa-arrow-right-to-bracket"></i> లాగిన్</button>
+    </div>
+  </div>
+
+  <!-- Change PIN Modal -->
+  <div class="modal-veil" id="changePinVeil">
+    <div class="modal-window" style="max-width:390px; text-align:center;">
+      <div class="modal-head">
+        <h3 style="color:#1e1b4b; font-size:18px;"><i class="fa-solid fa-key" style="color:#f59e0b;"></i> అడ్మిన్ పిన్ మార్చండి</h3>
+        <button class="modal-close" onclick="closeChangePinModal()">&times;</button>
+      </div>
+      <p style="color:#64748b; font-size:13px; margin-bottom:16px;">
+        మీరు ఎప్పుడైనా మీ రహస్య పిన్ కోడ్‌ను స్వయంగా మార్చుకోవచ్చు.
+      </p>
+      <form onsubmit="handlePinChange(event)" style="text-align:left;">
+        <div class="field-wrap">
+          <label>ప్రస్తుత పిన్ (Current PIN)</label>
+          <input type="password" id="currentPinInput" class="field-input" placeholder="ప్రస్తుత పిన్ నమోదు చేయండి" required />
+        </div>
+        <div class="field-wrap">
+          <label>కొత్త పిన్ (New PIN)</label>
+          <input type="password" id="newPinInput" class="field-input" placeholder="కొత్త పిన్ నమోదు చేయండి" required minlength="4" />
+        </div>
+        <div class="field-wrap">
+          <label>కొత్త పిన్ ధృవీకరించండి (Confirm PIN)</label>
+          <input type="password" id="confirmPinInput" class="field-input" placeholder="మళ్ళీ కొత్త పిన్ నమోదు చేయండి" required minlength="4" />
+        </div>
+        <button type="submit" class="btn-dialog-submit" style="background:linear-gradient(135deg, #f59e0b, #d97706);"><i class="fa-solid fa-check"></i> పిన్ మార్పును సేవ్ చేయండి</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Custom In-App Notification Toast -->
+  <div id="customToast" style="display:none; position:fixed; bottom:24px; right:24px; z-index:9999; padding:12px 20px; border-radius:12px; color:white; font-weight:800; font-size:14px; box-shadow:0 8px 24px rgba(0,0,0,0.2);"></div>
+
+  <!-- Upload Modal -->
+  <div class="modal-veil" id="resourceUploadVeil">
+    <div class="modal-window">
+      <div class="modal-head">
+        <h3 style="color:#1e1b4b; font-size:20px;"><i class="fa-solid fa-cloud-arrow-up" style="color:#0284c7;"></i> ఫైల్ / లింక్ నిక్షిప్తం</h3>
+        <button class="modal-close" onclick="closeUploadFormModal()">&times;</button>
+      </div>
+      
+      <form id="newUploadForm" onsubmit="saveNewResourceEntry(event)">
+        <div class="field-wrap">
+          <label>ముఖ్య శీర్షిక (హెడ్డింగ్ ఎంచుకోండి)</label>
+          <select id="entryCategory" class="field-input" required>
+            <option value="textbooks">పాఠ్య పుస్తకాలు</option>
+            <option value="digital">డిజిటల్ పాఠాలు</option>
+            <option value="grammar">వ్యాకరణం</option>
+            <option value="exams">మాదిరి ప్రశ్నలు & పరీక్షలు</option>
+            <option value="quiz">క్విజ్</option>
+            <option value="projects">ప్రాజెక్టులు & సమీక్షలు</option>
+            <option value="additional">అదనపు సమాచారం</option>
+          </select>
+        </div>
+
+        <div class="field-wrap">
+          <label>తరగతి</label>
+          <select id="entryClass" class="field-input" required>
+            <option value="6">6వ తరగతి</option>
+            <option value="7">7వ తరగతి</option>
+            <option value="8">8వ తరగతి</option>
+            <option value="9">9వ తరగతి</option>
+            <option value="10">10వ తరగతి</option>
+            <option value="ramayanam">రామాయణం (క్విజ్ కోసం)</option>
+            <option value="grammar_quiz">వ్యాకరణం (క్విజ్ కోసం)</option>
+            <option value="general">సాధారణం / అందరికీ</option>
+          </select>
+        </div>
+
+        <div class="field-wrap">
+          <label>అంశం పేరు (Title)</label>
+          <input type="text" id="entryTitle" class="field-input" placeholder="ఉదా: 10వ తరగతి దానశీలము నోట్స్ PDF" required>
+        </div>
+
+        <div class="field-wrap">
+          <label>ఫైల్ రకం (Type)</label>
+          <select id="entryType" class="field-input" onchange="toggleFormInputs()" required>
+            <option value="pdf">PDF ఫైల్ (డాక్యుమెంట్)</option>
+            <option value="image">JPG / PNG చిత్రం</option>
+            <option value="ppt">PPT / స్లైడ్స్</option>
+            <option value="video">యూట్యూబ్ వీడియో లింక్</option>
+            <option value="link">వెబ్ / డ్రైవ్ లింక్</option>
+          </select>
+        </div>
+
+        <div class="field-wrap" id="filePickerWrapper">
+          <label>డివైజ్ నుండి ఫైల్ ఎంచుకోండి</label>
+          <input type="file" id="entryFileInput" class="field-input" accept=".pdf,image/*,.ppt,.pptx">
+        </div>
+
+        <div class="field-wrap" id="urlPickerWrapper" style="display:none;">
+          <label>యూట్యూబ్ లేదా వెబ్ లింక్ URL</label>
+          <input type="url" id="entryUrlInput" class="field-input" placeholder="https://www.youtube.com/watch?v=...">
+        </div>
+
+        <div class="field-wrap">
+          <label>చిన్న వివరణ (Description)</label>
+          <textarea id="entryDesc" class="field-input" rows="2" placeholder="ఈ అంశం గురించిన వివరాలు..."></textarea>
+        </div>
+
+        <button type="submit" class="btn-dialog-submit"><i class="fa-solid fa-floppy-disk"></i> ఆ శీర్షికలో భద్రపరచండి</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    /* =========================================================================
+       1. HIGH-PRECISION BULLETPROOF SOUND ENGINE
+       ========================================================================= */
+    let currentAudioObj = null;
+
+    function playSoundForWord(word, cardElement) {
+      if (!word) return;
+
+      const wave = document.getElementById("waveVisualizer");
+      if (wave) wave.classList.add("speaking");
+
+      if (cardElement) {
+        document.querySelectorAll(".sound-word-card").forEach(c => c.classList.remove("playing"));
+        cardElement.classList.add("playing");
+      }
+
+      if (currentAudioObj) {
+        currentAudioObj.pause();
+        currentAudioObj = null;
+      }
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+      }
+
+      const encodedWord = encodeURIComponent(word);
+      const audioUrl = `https://translate.google.com/translate_tts?ie=UTF-8&tl=te&client=tw-ob&q=${encodedWord}`;
+
+      const audio = new Audio(audioUrl);
+      currentAudioObj = audio;
+
+      audio.onended = () => {
+        if (wave) wave.classList.remove("speaking");
+        if (cardElement) cardElement.classList.remove("playing");
+      };
+
+      audio.onerror = () => {
+        fallbackToSpeechSynthesis(word, wave, cardElement);
+      };
+
+      const playPromise = audio.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {
+          fallbackToSpeechSynthesis(word, wave, cardElement);
+        });
+      }
+    }
+
+    function fallbackToSpeechSynthesis(word, wave, cardElement) {
+      if (!('speechSynthesis' in window)) {
+        if (wave) wave.classList.remove("speaking");
+        if (cardElement) cardElement.classList.remove("playing");
+        return;
+      }
+
+      const utterance = new SpeechSynthesisUtterance(word);
+      utterance.lang = 'te-IN';
+      utterance.rate = 0.85;
+
+      const voices = window.speechSynthesis.getVoices();
+      const teVoice = voices.find(v => v.lang.includes('te') || v.name.includes('Telugu'));
+      if (teVoice) utterance.voice = teVoice;
+
+      utterance.onend = () => {
+        if (wave) wave.classList.remove("speaking");
+        if (cardElement) cardElement.classList.remove("playing");
+      };
+      utterance.onerror = () => {
+        if (wave) wave.classList.remove("speaking");
+        if (cardElement) cardElement.classList.remove("playing");
+      };
+
+      window.speechSynthesis.speak(utterance);
+    }
+
+    /* =========================================================================
+       2. WORDS VOCABULARY BANK
+       ========================================================================= */
+    const teluguVocabulary = {
+      achulu: [
+        "ఈగ", "అమ్మ", "ఆవు", "ఇల్లు", "ఉడత", "ఊయల", "ఋషి", "ఎలుక", "ఏనుగు", "ఐదు", 
+        "ఒంటె", "ఓడ", "ఔషధం", "అంబరం", "అద్దం", "ఆకు", "ఇటుక", "ఈక", "ఉంగరం", "ఊరు"
+      ],
+      hallulu: [
+        "కలము", "ఖడ్గం", "గంట", "ఘటము", "చదరంగం", "ఛత్రము", "జడ", "ఝషము", "టపాకాయ", 
+        "డమరుకం", "తబల", "దండ", "నగ", "పలక", "ఫలము", "బంతి", "భవనం", "మంచం", "యజ్ఞం", "రథం"
+      ],
+      sarala: [
+        "అరక", "ఆట", "ఈల", "ఉలవ", "కలశం", "గగనం", "చవక", "జలజ", "దవడ", "నటన", 
+        "పడవ", "బలపం", "మమత", "రమ", "వల", "వనం", "శరం", "సభ", "హలం", "ఆశ"
+      ],
+      dvitva: [
+        "అక్క", "చెల్లి", "అన్న", "అమ్మ", "గువ్వ", "పిట్ట", "మొగ్గ", "కప్ప", "బస్సు", 
+        "నిచ్చెన", "ముద్ద", "రచ్చ", "గుడ్డ", "పువ్వు", "నెయ్యి", "గొడ్డలి", "ముక్కు", "కన్ను", "కాలు", "పిల్లి"
+      ],
+      samyukta: [
+        "పుస్తకం", "మిత్రుడు", "వ్యాకరణం", "విజ్ఞానం", "శక్తి", "భక్తి", "రత్నం", "వస్త్రం", 
+        "సూర్యుడు", "చంద్రుడు", "ప్రార్థన", "ధర్మం", "కర్మ", "చక్రం", "వర్షం", "తీర్థం", "స్నేహం", "ప్రేమ"
+      ],
+      varnamala: [
+        "అ", "ఆ", "ఇ", "ఈ", "ఉ", "ఊ", "ఋ", "ౠ", "ఎ", "ఏ", "ఐ", "ఒ", "ఓ", "ఔ", "అం", "అః",
+        "క", "ఖ", "గ", "ఘ", "ఙ", "చ", "ఛ", "జ", "ఝ", "ఞ", "ట", "ఠ", "డ", "ఢ", "ణ",
+        "త", "థ", "ద", "ధ", "న", "ప", "ఫ", "బ", "భ", "మ", "య", "ర", "ల", "వ", "శ", "ష", "స", "హ", "ళ", "క్ష", "ఱ"
+      ]
+    };
+
+    function loadWordsByType(type) {
+      const box = document.getElementById("wordCardsBox");
+      const list = teluguVocabulary[type] || [];
+      
+      document.querySelectorAll(".sound-lab-wrapper .pill-filter").forEach(b => {
+        b.classList.toggle("active", b.getAttribute("onclick").includes(`'${type}'`));
+      });
+
+      box.innerHTML = list.map(word => `
+        <div class="sound-word-card" onclick="playSoundForWord('${word}', this)">
+          <span class="sound-text-label">${word}</span>
+          <button class="sound-icon-bubble" title="వినండి"><i class="fa-solid fa-volume-high"></i></button>
+        </div>
+      `).join('');
+    }
+
+    /* =========================================================================
+       3. NAVIGATION CONTROLLER
+       ========================================================================= */
+    function switchMainTab(targetId) {
+      document.querySelectorAll(".tab-view").forEach(s => s.classList.remove("active"));
+      document.querySelectorAll(".nav-tab").forEach(t => t.classList.remove("active"));
+
+      const activeView = document.getElementById(`view-${targetId}`);
+      if (activeView) activeView.classList.add("active");
+
+      const activeBtn = document.querySelector(`.nav-tab[data-target="${targetId}"]`);
+      if (activeBtn) activeBtn.classList.add("active");
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    /* =========================================================================
+       4. INDEXEDDB PERSISTENCE STORAGE
+       ========================================================================= */
+    let persistentDB;
+    const DB_NAME = "VidyarthinidhiMasterStore";
+    const DB_VERSION = 1;
+    const STORE_NAME = "educational_items";
+
+    function initializeIndexedDB() {
+      return new Promise((resolve, reject) => {
+        const req = indexedDB.open(DB_NAME, DB_VERSION);
+        req.onupgradeneeded = (e) => {
+          const dbInstance = e.target.result;
+          if (!dbInstance.objectStoreNames.contains(STORE_NAME)) {
+            const store = dbInstance.createObjectStore(STORE_NAME, { keyPath: "id", autoIncrement: true });
+            store.createIndex("category", "category", { unique: false });
+            store.createIndex("classGrade", "classGrade", { unique: false });
+          }
+        };
+        req.onsuccess = (e) => {
+          persistentDB = e.target.result;
+          resolve(persistentDB);
+        };
+        req.onerror = (e) => reject(e.target.error);
+      });
+    }
+
+    function storeItemToDB(item) {
+      return new Promise((resolve, reject) => {
+        const tx = persistentDB.transaction(STORE_NAME, "readwrite");
+        const store = tx.objectStore(STORE_NAME);
+        const req = store.add(item);
+        req.onsuccess = () => resolve(req.result);
+        req.onerror = () => reject(req.error);
+      });
+    }
+
+    function retrieveAllFromDB() {
+      return new Promise((resolve, reject) => {
+        const tx = persistentDB.transaction(STORE_NAME, "readonly");
+        const store = tx.objectStore(STORE_NAME);
+        const req = store.getAll();
+        req.onsuccess = () => resolve(req.result);
+        req.onerror = () => reject(req.error);
+      });
+    }
+
+    function deleteItemFromDB(id) {
+      return new Promise((resolve, reject) => {
+        const tx = persistentDB.transaction(STORE_NAME, "readwrite");
+        const store = tx.objectStore(STORE_NAME);
+        const req = store.delete(id);
+        req.onsuccess = () => resolve();
+        req.onerror = () => reject(req.error);
+      });
+    }
+
+    /* =========================================================================
+       5. SECRET ADMIN AUTHENTICATION (DEFAULT PIN: 19011983BPK)
+       ========================================================================= */
+    let isAdminActive = false;
+    const DEFAULT_PIN = "19011983BPK";
+    const PIN_STORAGE_KEY = "vidyarthinidhi_admin_pin";
+
+    function getAdminPin() {
+      return localStorage.getItem(PIN_STORAGE_KEY) || DEFAULT_PIN;
+    }
+
+    function setAdminPin(newPin) {
+      localStorage.setItem(PIN_STORAGE_KEY, newPin);
+    }
+
+    function showNotice(msg, isError = false) {
+      const toast = document.getElementById("customToast");
+      if (!toast) return;
+      toast.innerText = msg;
+      toast.style.background = isError ? "#ef4444" : "#10b981";
+      toast.style.display = "block";
+      setTimeout(() => {
+        toast.style.display = "none";
+      }, 3500);
+    }
+
+    function openAdminSecurityModal() {
+      if (isAdminActive) {
+        openUploadFormModal();
+      } else {
+        document.getElementById("adminAuthVeil").classList.add("open");
+        document.getElementById("adminSecretPinInput").focus();
+      }
+    }
+
+    function closeAdminSecurityModal() {
+      document.getElementById("adminAuthVeil").classList.remove("open");
+      document.getElementById("adminSecretPinInput").value = "";
+    }
+
+    function validateAdminPin() {
+      const pin = document.getElementById("adminSecretPinInput").value.trim();
+      if (pin === getAdminPin()) {
+        isAdminActive = true;
+        closeAdminSecurityModal();
+        updateAdminVisuals();
+        showNotice("స్వాగతం ప్రవీణ్ కుమార్ గారు! అడ్మిన్ మోడ్ ప్రారంభించబడింది.");
+      } else {
+        showNotice("తప్పు పిన్! దయచేసి సరైన పిన్ నమోదు చేయండి.", true);
+      }
+    }
+
+    function performAdminLogout() {
+      isAdminActive = false;
+      updateAdminVisuals();
+      showNotice("అడ్మిన్ లాగౌట్ పూర్తయింది.");
+    }
+
+    function openChangePinModal() {
+      document.getElementById("changePinVeil").classList.add("open");
+      document.getElementById("currentPinInput").value = "";
+      document.getElementById("newPinInput").value = "";
+      document.getElementById("confirmPinInput").value = "";
+      document.getElementById("currentPinInput").focus();
+    }
+
+    function closeChangePinModal() {
+      document.getElementById("changePinVeil").classList.remove("open");
+    }
+
+    function handlePinChange(e) {
+      e.preventDefault();
+      const currentPin = document.getElementById("currentPinInput").value.trim();
+      const newPin = document.getElementById("newPinInput").value.trim();
+      const confirmPin = document.getElementById("confirmPinInput").value.trim();
+
+      if (currentPin !== getAdminPin()) {
+        showNotice("ప్రస్తుత పిన్ తప్పుగా ఉంది! సరిచూసుకోండి.", true);
+        return;
+      }
+      if (newPin.length < 4) {
+        showNotice("కొత్త పిన్ కనీసం 4 అక్షరాలు/అంకెలు ఉండాలి!", true);
+        return;
+      }
+      if (newPin !== confirmPin) {
+        showNotice("కొత్త పిన్ మరియు కన్ఫర్మ్ పిన్ సరిపోలడం లేదు!", true);
+        return;
+      }
+
+      setAdminPin(newPin);
+      closeChangePinModal();
+      showNotice("అభినందనలు! మీ అడ్మిన్ పిన్ విజయవంతంగా మార్చబడింది.");
+    }
+
+    function updateAdminVisuals() {
+      const bar = document.getElementById("adminControlBar");
+      if (bar) {
+        bar.style.display = isAdminActive ? "block" : "none";
+      }
+      renderAllCategoryGrids();
+    }
+
+    function openUploadFormModal() {
+      document.getElementById("resourceUploadVeil").classList.add("open");
+    }
+
+    function closeUploadFormModal() {
+      document.getElementById("resourceUploadVeil").classList.remove("open");
+      document.getElementById("newUploadForm").reset();
+      toggleFormInputs();
+    }
+
+    function toggleFormInputs() {
+      const type = document.getElementById("entryType").value;
+      const fileWrap = document.getElementById("filePickerWrapper");
+      const urlWrap = document.getElementById("urlPickerWrapper");
+
+      if (type === "video" || type === "link") {
+        fileWrap.style.display = "none";
+        urlWrap.style.display = "block";
+      } else {
+        fileWrap.style.display = "block";
+        urlWrap.style.display = "none";
+      }
+    }
+
+    // SECRET TRIGGER: Triple-click detection on brand logo
+    let logoClickCount = 0;
+    let logoClickTimer = null;
+    const logoArea = document.getElementById("secretLogoTrigger");
+    if (logoArea) {
+      logoArea.addEventListener("click", () => {
+        logoClickCount++;
+        if (logoClickCount === 1) {
+          logoClickTimer = setTimeout(() => {
+            logoClickCount = 0;
+          }, 800);
+        } else if (logoClickCount === 3) {
+          clearTimeout(logoClickTimer);
+          logoClickCount = 0;
+          openAdminSecurityModal();
+        }
+      });
+    }
+
+    // SECRET TRIGGER: Keyboard shortcuts (Alt + A)
+    window.addEventListener("keydown", (e) => {
+      if (e.altKey && (e.key === "a" || e.key === "A")) {
+        e.preventDefault();
+        openAdminSecurityModal();
+      }
+    });
+
+    /* =========================================================================
+       6. SAVE & RENDER INTO CATEGORIES
+       ========================================================================= */
+    async function saveNewResourceEntry(e) {
+      e.preventDefault();
+      const cat = document.getElementById("entryCategory").value;
+      const cls = document.getElementById("entryClass").value;
+      const title = document.getElementById("entryTitle").value;
+      const type = document.getElementById("entryType").value;
+      const desc = document.getElementById("entryDesc").value;
+
+      let payload = null;
+      let fname = "";
+
+      if (type === "video" || type === "link") {
+        payload = document.getElementById("entryUrlInput").value;
+      } else {
+        const fileInput = document.getElementById("entryFileInput");
+        if (fileInput.files.length > 0) {
+          const file = fileInput.files[0];
+          fname = file.name;
+          payload = await fileToBase64(file);
+        }
+      }
+
+      if (!payload) {
+        showNotice("దయచేసి సరైన ఫైల్ లేదా లింక్ అందించండి!", true);
+        return;
+      }
+
+      const item = {
+        category: cat,
+        classGrade: cls,
+        title: title,
+        type: type,
+        description: desc,
+        data: payload,
+        fileName: fname,
+        date: new Date().toLocaleDateString('te-IN')
+      };
+
+      await storeItemToDB(item);
+      showNotice(`"${title}" విజయవంతంగా ${cat} శీర్షికలో భద్రపరచబడింది!`);
+      closeUploadFormModal();
+      renderAllCategoryGrids();
+    }
+
+    function fileToBase64(file) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = (err) => reject(err);
+        reader.readAsDataURL(file);
+      });
+    }
+
+    const sectionFilters = {
+      textbooks: 'all',
+      digital: 'all',
+      grammar: 'all',
+      exams: 'all',
+      quiz: 'all',
+      projects: 'all',
+      additional: 'all'
+    };
+
+    function setSectionGrade(sec, grade) {
+      sectionFilters[sec] = grade;
+      const box = document.querySelector(`.class-selector-box[data-section="${sec}"]`);
+      if (box) {
+        box.querySelectorAll(".pill-filter").forEach(p => {
+          p.classList.toggle("active", p.getAttribute("onclick").includes(`'${grade}'`));
+        });
+      }
+      renderCategoryCards(sec);
+    }
+
+    async function renderAllCategoryGrids() {
+      const sections = ['textbooks', 'digital', 'grammar', 'exams', 'quiz', 'projects', 'additional'];
+      for (const s of sections) {
+        await renderCategoryCards(s);
+      }
+    }
+
+    async function renderCategoryCards(sec) {
+      const grid = document.getElementById(`grid-${sec}`);
+      if (!grid) return;
+
+      const items = await retrieveAllFromDB();
+      const currentGrade = sectionFilters[sec];
+
+      const filtered = items.filter(i => {
+        if (i.category !== sec) return false;
+        if (currentGrade !== 'all' && i.classGrade !== currentGrade) return false;
+        return true;
+      });
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `
+          <div style="grid-column: 1/-1; text-align:center; padding:35px; background:white; border-radius:20px; border:2px dashed #cbd5e1;">
+            <i class="fa-solid fa-folder-open" style="font-size:38px; color:#94a3b8; margin-bottom:8px;"></i>
+            <p style="color:#64748b; font-size:15px; font-weight:700;">ఈ విభాగంలో ఇంకా ఎటువంటి ఫైల్స్ లేవు.</p>
+          </div>
+        `;
+        return;
+      }
+
+      grid.innerHTML = filtered.map(item => {
+        const isUrl = item.type === 'video' || item.type === 'link';
+        const typeClass = item.type === 'pdf' ? 'type-pdf' : item.type === 'video' ? 'type-video' : item.type === 'ppt' ? 'type-ppt' : item.type === 'image' ? 'type-image' : 'type-link';
+        const iconClass = item.type === 'pdf' ? 'fa-file-pdf' : item.type === 'video' ? 'fa-youtube' : item.type === 'ppt' ? 'fa-file-powerpoint' : item.type === 'image' ? 'fa-file-image' : 'fa-link';
+
+        return `
+          <div class="res-card-box">
+            <div>
+              <div class="type-pill ${typeClass}">
+                <i class="fa-solid ${iconClass}"></i> ${item.type.toUpperCase()} • ${item.classGrade === 'general' ? 'అందరికీ' : item.classGrade + 'వ తరగతి'}
+              </div>
+              <h4 class="card-title-text">${sanitize(item.title)}</h4>
+              <p class="card-desc-text">${sanitize(item.description || 'తేదీ: ' + item.date)}</p>
+            </div>
+            
+            <div class="card-btn-row">
+              ${isUrl ? `
+                <a href="${item.data}" target="_blank" class="btn-view-style"><i class="fa-solid fa-arrow-up-right-from-square"></i> వీక్షించండి</a>
+              ` : `
+                <button onclick="previewFileRecord('${item.id}')" class="btn-view-style"><i class="fa-solid fa-eye"></i> వ్యూ</button>
+                <button onclick="downloadFileRecord('${item.id}')" class="btn-down-style"><i class="fa-solid fa-download"></i> డౌన్‌లోడ్</button>
+              `}
+              ${isAdminActive ? `
+                <button onclick="deleteFileRecord(${item.id})" class="btn-del-style" title="తొలగించండి"><i class="fa-solid fa-trash-can"></i></button>
+              ` : ''}
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    async function previewFileRecord(id) {
+      const items = await retrieveAllFromDB();
+      const r = items.find(i => i.id == id);
+      if (r && r.data) {
+        const win = window.open();
+        win.document.write(`
+          <title>${sanitize(r.title)}</title>
+          <body style="margin:0; background:#0f172a; display:flex; align-items:center; justify-content:center; height:100vh;">
+            ${r.type === 'image' 
+              ? `<img src="${r.data}" style="max-width:100%; max-height:100%; object-fit:contain;">`
+              : `<iframe src="${r.data}" frameborder="0" style="width:100%; height:100vh;"></iframe>`}
+          </body>
+        `);
+      }
+    }
+
+    async function downloadFileRecord(id) {
+      const items = await retrieveAllFromDB();
+      const r = items.find(i => i.id == id);
+      if (r && r.data) {
+        const a = document.createElement("a");
+        a.href = r.data;
+        a.download = r.fileName || `${r.title}.${r.type === 'pdf' ? 'pdf' : 'jpg'}`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+      }
+    }
+
+    async function deleteFileRecord(id) {
+      if (confirm("ఈ ఫైల్‌ను శాశ్వతంగా తొలగించాలనుకుంటున్నారా?")) {
+        await deleteItemFromDB(id);
+        renderAllCategoryGrids();
+      }
+    }
+
+    function sanitize(text) {
+      return (text || '').replace(/[&<>"']/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' })[m]);
+    }
+
+    /* =========================================================================
+       7. INITIALIZATION
+       ========================================================================= */
+    window.addEventListener("DOMContentLoaded", async () => {
+      await initializeIndexedDB();
+      loadWordsByType("achulu");
+      renderAllCategoryGrids();
+    });
+  </script>
+</body>
+</html>
