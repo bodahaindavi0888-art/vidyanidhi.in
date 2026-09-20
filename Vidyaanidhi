@@ -494,4 +494,785 @@
       </div>
 
       <!-- ఆన్‌లైన్ క్విజ్ ప్రశ్నలు లోడ్ అయ్యే కంటైనర్ -->
-      <div id="quiz-questions-cont
+      <div id="quiz-questions-container"></div>
+
+      <!-- అడ్మిన్ అప్‌లోడ్ చేసిన ఇతర క్విజ్ ఫైల్స్ -->
+      <h3 class="sub-head" style="margin-top: 30px;"><i class="fa-solid fa-folder-open"></i> అడ్మిన్ క్విజ్ మెటీరియల్స్</h3>
+      <div class="card-grid" id="quiz-grid"></div>
+    </section>
+
+    <!-- 7. ప్రాజెక్టులు & సమీక్షలు -->
+    <section id="projects" class="section">
+      <h2 class="sec-title"><i class="fa-solid fa-diagram-project" style="color:var(--pink);"></i> ప్రాజెక్టులు & సమీక్షలు</h2>
+      <div class="class-tabs">
+        <button class="class-btn active" onclick="filterClass('projects', 'all', this)"><i class="fa-solid fa-layer-group"></i> అన్నీ</button>
+        <button class="class-btn" onclick="filterClass('projects', '6', this)">6వ తరగతి</button>
+        <button class="class-btn" onclick="filterClass('projects', '7', this)">7వ తరగతి</button>
+        <button class="class-btn" onclick="filterClass('projects', '8', this)">8వ తరగతి</button>
+        <button class="class-btn" onclick="filterClass('projects', '9', this)">9వ తరగతి</button>
+        <button class="class-btn" onclick="filterClass('projects', '10', this)">10వ తరగతి</button>
+      </div>
+      <div class="card-grid" id="projects-grid"></div>
+    </section>
+
+    <!-- 8. అదనపు సమాచారం (ధ్వని ఉచ్ఛారణతో) -->
+    <section id="extra" class="section">
+      <h2 class="sec-title"><i class="fa-solid fa-volume-high" style="color:var(--green);"></i> అదనపు సమాచారం - భాషా నైపుణ్యాలు (శబ్ద ఉచ్ఛారణతో)</h2>
+      
+      <div class="class-tabs">
+        <button class="class-btn active" onclick="filterClass('extra', 'all', this)"><i class="fa-solid fa-layer-group"></i> అన్నీ</button>
+        <button class="class-btn" onclick="filterClass('extra', '6', this)">6వ తరగతి</button>
+        <button class="class-btn" onclick="filterClass('extra', '7', this)">7వ తరగతి</button>
+        <button class="class-btn" onclick="filterClass('extra', '8', this)">8వ తరగతి</button>
+        <button class="class-btn" onclick="filterClass('extra', '9', this)">9వ తరగతి</button>
+        <button class="class-btn" onclick="filterClass('extra', '10', this)">10వ తరగతి</button>
+      </div>
+
+      <h3 class="sub-head"><i class="fa-solid fa-circle-play" style="color:var(--violet);"></i> అచ్చులు</h3>
+      <div class="word-grid" id="achulu-container"></div>
+
+      <h3 class="sub-head"><i class="fa-solid fa-circle-play" style="color:var(--blue);"></i> హల్లులు</h3>
+      <div class="word-grid" id="hallulu-container"></div>
+
+      <h3 class="sub-head"><i class="fa-solid fa-circle-play" style="color:var(--green);"></i> గుణింతాల గుర్తులు & ఒత్తులు</h3>
+      <div class="word-grid" id="ottulu-container"></div>
+
+      <h3 class="sub-head"><i class="fa-solid fa-headphones" style="color:var(--yellow);"></i> 100 అచ్చుల పదాలు</h3>
+      <div class="word-grid" id="achulu-words-container"></div>
+
+      <h3 class="sub-head"><i class="fa-solid fa-headphones" style="color:var(--orange);"></i> 100 హల్లుల పదాలు</h3>
+      <div class="word-grid" id="hallulu-words-container"></div>
+
+      <h3 class="sub-head"><i class="fa-solid fa-headphones" style="color:var(--red);"></i> 100 సరళ పదాలు</h3>
+      <div class="word-grid" id="sarala-container"></div>
+
+      <h3 class="sub-head"><i class="fa-solid fa-headphones" style="color:var(--pink);"></i> 100 ద్విత్వ పదాలు</h3>
+      <div class="word-grid" id="dvitva-container"></div>
+
+      <h3 class="sub-head"><i class="fa-solid fa-headphones" style="color:var(--indigo);"></i> 100 సంయుక్త పదాలు</h3>
+      <div class="word-grid" id="samyukta-container"></div>
+
+      <h3 class="sec-title" style="margin-top: 30px;"><i class="fa-solid fa-folder-open"></i> అడ్మిన్ అదనపు ఫైల్స్</h3>
+      <div class="card-grid" id="extra-grid"></div>
+    </section>
+
+    <!-- 9. నా గురించి -->
+    <section id="about" class="section">
+      <h2 class="sec-title"><i class="fa-solid fa-address-card" style="color:var(--violet);"></i> నా గురించి</h2>
+      
+      <div class="profile-card">
+        <div class="profile-header">
+          <div class="profile-avatar">
+            <i class="fa-solid fa-user-tie"></i>
+          </div>
+          <div>
+            <h3 style="font-size: 1.8rem; color: #2d3436; margin-bottom: 5px;">బి. ప్రవీణ్ కుమార్</h3>
+            <p style="color: var(--violet); font-weight: bold; font-size: 1.15rem;">
+              <i class="fa-solid fa-user-graduate"></i> MA, B.Ed.
+            </p>
+          </div>
+        </div>
+
+        <div class="profile-grid">
+          <div class="p-box" style="border-left-color: var(--blue);">
+            <h5><i class="fa-solid fa-school" style="color:var(--blue);"></i> పనిచేస్తున్న పాఠశాల</h5>
+            <p>జిల్లా పరిషత్ ఉన్నత పాఠశాల</p>
+            <p style="font-size: 1rem; color: #555; font-weight: normal; margin-top: 4px;">అనాజీపూర్, రాయపోల్, సిద్దిపేట జిల్లా.</p>
+          </div>
+
+          <div class="p-box" style="border-left-color: var(--green);">
+            <h5><i class="fa-solid fa-graduation-cap" style="color:var(--green);"></i> విద్యార్హతలు</h5>
+            <p>MA, B.Ed.</p>
+          </div>
+
+          <div class="p-box" style="border-left-color: var(--orange);">
+            <h5><i class="fa-solid fa-phone" style="color:var(--orange);"></i> సెల్ నంబర్ / సంప్రదించండి</h5>
+            <p><a href="tel:9908331738" style="color:#0984e3; text-decoration:none;"><i class="fa-solid fa-phone-flip"></i> 9908331738</a></p>
+            <div style="margin-top: 8px;">
+              <a href="https://wa.me/919908331738" target="_blank" class="btn" style="background:#25d366; font-size:0.85rem; padding:4px 12px;">
+                <i class="fa-brands fa-whatsapp"></i> వాట్సాప్
+              </a>
+            </div>
+          </div>
+
+          <div class="p-box" style="border-left-color: var(--red); grid-column: 1 / -1;">
+            <h5><i class="fa-solid fa-feather-pointed" style="color:var(--red);"></i> నా ప్రత్యేకతలు</h5>
+            <p style="font-size: 1.15rem; color: #2c3e50; line-height: 1.8;">
+              ✍️ పద్యాలు, కవిత్వాలు రాయడం, పాటలు రాయడం మరియు విద్యార్థులలో సాహిత్యాభిలాషను, భాషా వికాసాన్ని పెంపొందించడం.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- సీక్రెట్ అడ్మిన్ లాక్ ఐకాన్ -->
+  <div id="adminTrigger" title="Admin Control" onclick="openAdminLogin()">
+    <i class="fa-solid fa-lock"></i>
+  </div>
+
+  <!-- అడ్మిన్ మోడల్ -->
+  <div class="modal" id="adminModal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeAdmin()">&times;</span>
+      
+      <!-- 1. లాగిన్ -->
+      <div id="loginForm">
+        <h3 style="color:var(--indigo); margin-bottom:10px;"><i class="fa-solid fa-shield-halved"></i> అడ్మిన్ లాగిన్</h3>
+        <div class="form-group">
+          <label>రహస్య పాస్‌వర్డ్ నమోదు చేయండి</label>
+          <input type="password" id="adminPass" placeholder="పాస్‌వర్డ్...">
+        </div>
+        <button class="btn" onclick="verifyAdmin()"><i class="fa-solid fa-right-to-bracket"></i> లాగిన్</button>
+        <div style="margin-top:15px; text-align:right;">
+          <a href="javascript:void(0)" onclick="showForgotScreen()" style="color:#e67e22; font-size:0.85rem; text-decoration:underline;">పాస్‌వర్డ్ మర్చిపోయారా? (Reset)</a>
+        </div>
+      </div>
+
+      <!-- 2. పాస్‌వర్డ్ రీసెట్ -->
+      <div id="forgotForm" style="display:none;">
+        <h3 style="color:var(--red); margin-bottom:10px;"><i class="fa-solid fa-key"></i> పాస్‌వర్డ్ రీసెట్ (Reset)</h3>
+        <p style="font-size:0.85rem; color:#666; margin-bottom:12px;">రహస్య రికవరీ పిన్ (Default PIN: <strong>9908</strong>) నమోదు చేయండి.</p>
+        <div class="form-group">
+          <label>రికవరీ పిన్ (Recovery PIN)</label>
+          <input type="password" id="recoveryPinInput" placeholder="4-అంకెల పిన్">
+        </div>
+        <div class="form-group">
+          <label>కొత్త పాస్‌వర్డ్ (New Password)</label>
+          <input type="password" id="forgotNewPass" placeholder="కొత్త పాస్‌వర్డ్">
+        </div>
+        <div style="margin-top:15px;">
+          <button class="btn" style="background:var(--green);" onclick="submitForgotReset()"><i class="fa-solid fa-check"></i> రీసెట్ చేసి సేవ్ చేయి</button>
+          <button class="btn" style="background:#636e72;" onclick="showLoginScreen()">వెనుకకు</button>
+        </div>
+      </div>
+
+      <!-- 3. అప్‌లోడ్ & క్విజ్ క్రియేషన్ ప్యానెల్ -->
+      <div id="uploadForm" style="display:none;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+          <h3 id="formHeading" style="color:var(--violet);"><i class="fa-solid fa-cloud-arrow-up"></i> అంశం అప్‌లోడ్ / అప్‌డేట్</h3>
+          <button class="btn" style="background:#4b6584; font-size:0.8rem; padding:4px 10px;" onclick="togglePasswordChangeBox()"><i class="fa-solid fa-lock"></i> పాస్‌వర్డ్ మార్చు</button>
+        </div>
+
+        <div id="changePasswordBox" style="display:none; background:#f1f2f6; padding:15px; border-radius:10px; margin-bottom:15px;">
+          <h4 style="font-size:0.95rem; margin-bottom:8px; color:#2f3542;"><i class="fa-solid fa-key"></i> కొత్త పాస్‌వర్డ్ సెట్ చేసుకోండి:</h4>
+          <div class="form-group">
+            <input type="password" id="currentPassInput" placeholder="ప్రస్తుత పాత పాస్‌వర్డ్">
+          </div>
+          <div class="form-group">
+            <input type="password" id="newPassInput" placeholder="నూతన పాస్‌వర్డ్">
+          </div>
+          <button class="btn" style="background:var(--green); font-size:0.85rem;" onclick="changeAdminPassword()"><i class="fa-solid fa-check"></i> మార్చు</button>
+        </div>
+
+        <input type="hidden" id="editItemId" value="">
+
+        <div class="form-group">
+          <label>విభాగం</label>
+          <select id="uploadSec" onchange="toggleQuizFormFields()">
+            <option value="textbooks">పాఠ్య పుస్తకాలు</option>
+            <option value="digital">డిజిటల్ పాఠాలు</option>
+            <option value="grammar">వ్యాకరణం</option>
+            <option value="exams">మాదిరి ప్రశ్నలు & పరీక్షలు</option>
+            <option value="quiz">క్విజ్ (ఆన్‌లైన్ ప్రశ్న / ఫైల్)</option>
+            <option value="projects">ప్రాజెక్టులు & సమీక్షలు</option>
+            <option value="extra">అదనపు సమాచారం</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>తరగతి / ఉప విభాగం</label>
+          <select id="uploadClass">
+            <option value="6">6వ తరగతి</option>
+            <option value="7">7వ తరగతి</option>
+            <option value="8">8వ తరగతి</option>
+            <option value="9">9వ తరగతి</option>
+            <option value="10">10వ తరగతి</option>
+            <option value="ramayanam">రామాయణం</option>
+            <option value="grammar_quiz">వ్యాకరణం</option>
+          </select>
+        </div>
+
+        <!-- క్విజ్ ప్రశ్నల ప్రత్యేక ఫారమ్ ఫీల్డ్స్ -->
+        <div id="quizFormFields" style="display:none; background:#fffdf4; padding:12px; border:1px solid #f1c40f; border-radius:8px; margin-bottom:12px;">
+          <h4 style="font-size:0.95rem; color:#d35400; margin-bottom:8px;"><i class="fa-solid fa-circle-question"></i> ఆన్‌లైన్ క్విజ్ ప్రశ్న వివరాలు:</h4>
+          <div class="form-group">
+            <label>ప్రశ్న (Question)</label>
+            <input type="text" id="quizQText" placeholder="ప్రశ్నను ఇక్కడ రాయండి">
+          </div>
+          <div class="form-group"><label>ఆప్షన్ A</label><input type="text" id="quizOptA" placeholder="ఆప్షన్ A"></div>
+          <div class="form-group"><label>ఆప్షన్ B</label><input type="text" id="quizOptB" placeholder="ఆప్షన్ B"></div>
+          <div class="form-group"><label>ఆప్షన్ C</label><input type="text" id="quizOptC" placeholder="ఆప్షన్ C"></div>
+          <div class="form-group"><label>ఆప్షన్ D</label><input type="text" id="quizOptD" placeholder="ఆప్షన్ D"></div>
+          <div class="form-group">
+            <label>సరైన సమాధానం (Correct Option)</label>
+            <select id="quizCorrectOpt">
+              <option value="A">ఆప్షన్ A</option>
+              <option value="B">ఆప్షన్ B</option>
+              <option value="C">ఆప్షన్ C</option>
+              <option value="D">ఆప్షన్ D</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group" id="standardTitleGroup">
+          <label>శీర్షిక (Title)</label>
+          <input type="text" id="uploadTitle" placeholder="పాఠం పేరు లేదా ప్రశ్నపత్రం పేరు">
+        </div>
+
+        <div class="form-group" id="fileTypeGroup">
+          <label>ఫైల్ రకం</label>
+          <select id="fileType" onchange="toggleUploadInputs()">
+            <option value="pdf">PDF ఫైల్</option>
+            <option value="image">చిత్రం (JPG / PNG)</option>
+            <option value="ppt">ప్రెజెంటేషన్ (PPT / Slides)</option>
+            <option value="youtube">యూట్యూబ్ లింక్ (YouTube Video)</option>
+          </select>
+        </div>
+
+        <div class="form-group" id="urlInputGroup">
+          <label>లింక్ / URL (Google Drive లేదా YouTube లింక్)</label>
+          <input type="text" id="uploadUrl" placeholder="https://...">
+        </div>
+
+        <div class="form-group" id="fileInputGroup" style="display:none;">
+          <label>లోకల్ ఫైల్ ఎంచుకోండి</label>
+          <input type="file" id="fileDirect">
+        </div>
+
+        <div style="margin-top:15px; display:flex; gap:10px; flex-wrap:wrap;">
+          <button class="btn" id="saveSubmitBtn" onclick="saveUpload()"><i class="fa-solid fa-floppy-disk"></i> భద్రపరచు</button>
+          <button class="btn btn-edit" id="cancelEditBtn" style="display:none;" onclick="cancelEdit()">రద్దు చేయి</button>
+          <button class="btn" style="background:#636e72;" onclick="logoutAdmin()"><i class="fa-solid fa-power-off"></i> లాగౌట్</button>
+        </div>
+
+        <!-- శాశ్వత నిల్వ వ్యవస్థ -->
+        <div class="storage-box">
+          <p style="font-weight:bold; font-size:0.9rem; margin-bottom:8px;"><i class="fa-solid fa-database" style="color:var(--blue);"></i> శాశ్వత డేటా వ్యవస్థ (Permanent Backup):</p>
+          <div style="display:flex; gap:8px; flex-wrap:wrap;">
+            <button class="btn" style="background:var(--green); font-size:0.8rem; padding:5px 10px;" onclick="exportDataBackup()"><i class="fa-solid fa-download"></i> బ్యాకప్ డౌన్‌లోడ్</button>
+            <button class="btn" style="background:var(--orange); font-size:0.8rem; padding:5px 10px;" onclick="document.getElementById('importFileInput').click()"><i class="fa-solid fa-upload"></i> రీస్టోర్ డేటా</button>
+            <input type="file" id="importFileInput" style="display:none;" onchange="importDataBackup(event)">
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let isAdminLoggedIn = false;
+
+    async function hashPassword(plainText) {
+      const msgBuffer = new TextEncoder().encode(plainText);
+      const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+      const hashArray = Array.from(new Uint8Array(hashBuffer));
+      return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+    }
+
+    const DEFAULT_HASH = "240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9";
+    const RECOVERY_PIN = "9908";
+
+    function getSavedHash() {
+      return localStorage.getItem('vidyarthinidhi_admin_hash') || DEFAULT_HASH;
+    }
+
+    async function verifyAdmin() {
+      const pass = document.getElementById('adminPass').value;
+      if (!pass) { alert("పాస్‌వర్డ్ నమోదు చేయండి!"); return; }
+      
+      const hashedInput = await hashPassword(pass);
+      if (hashedInput === getSavedHash()) {
+        isAdminLoggedIn = true;
+        document.getElementById('loginForm').style.display = 'none';
+        document.getElementById('forgotForm').style.display = 'none';
+        document.getElementById('uploadForm').style.display = 'block';
+        document.getElementById('adminPass').value = '';
+        toggleAdminControls(true);
+      } else {
+        alert("తప్పుడు పాస్‌వర్డ్!");
+      }
+    }
+
+    function togglePasswordChangeBox() {
+      const box = document.getElementById('changePasswordBox');
+      box.style.display = (box.style.display === 'none') ? 'block' : 'none';
+    }
+
+    async function changeAdminPassword() {
+      const current = document.getElementById('currentPassInput').value;
+      const newPass = document.getElementById('newPassInput').value;
+
+      if (!current || !newPass) { alert("అన్ని ఫీల్డులను నమోదు చేయండి!"); return; }
+      if (newPass.length < 5) { alert("కనీసం 5 అక్షరాలు ఉండాలి!"); return; }
+
+      const currentHash = await hashPassword(current);
+      if (currentHash !== getSavedHash()) { alert("పాత పాస్‌వర్డ్ తప్పు!"); return; }
+
+      const newHash = await hashPassword(newPass);
+      localStorage.setItem('vidyarthinidhi_admin_hash', newHash);
+      alert("పాస్‌వర్డ్ വിജയవంతంగా మార్చబడింది!");
+      document.getElementById('currentPassInput').value = '';
+      document.getElementById('newPassInput').value = '';
+      togglePasswordChangeBox();
+    }
+
+    function showForgotScreen() {
+      document.getElementById('loginForm').style.display = 'none';
+      document.getElementById('forgotForm').style.display = 'block';
+    }
+
+    function showLoginScreen() {
+      document.getElementById('forgotForm').style.display = 'none';
+      document.getElementById('loginForm').style.display = 'block';
+    }
+
+    async function submitForgotReset() {
+      const pin = document.getElementById('recoveryPinInput').value;
+      const newPass = document.getElementById('forgotNewPass').value;
+
+      if (pin !== RECOVERY_PIN) { alert("రికవరీ పిన్ తప్పు!"); return; }
+      if (!newPass || newPass.length < 5) { alert("కనీసం 5 అక్షరాలు ఉండాలి."); return; }
+
+      const newHash = await hashPassword(newPass);
+      localStorage.setItem('vidyarthinidhi_admin_hash', newHash);
+      alert("పాస్‌వర్డ్ విజయవంతంగా రీసెట్ చేయబడింది!");
+      document.getElementById('recoveryPinInput').value = '';
+      document.getElementById('forgotNewPass').value = '';
+      showLoginScreen();
+    }
+
+    function showSection(id, btnElement) {
+      document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
+      document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      btnElement.classList.add('active');
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    }
+
+    function speakTelugu(text) {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = 'te-IN';
+        utterance.rate = 0.85;
+        window.speechSynthesis.speak(utterance);
+      } else {
+        alert("మీ బ్రౌజర్ వాయిస్ ఫీచర్‌ను సపోర్ట్ చేయడం లేదు.");
+      }
+    }
+
+    // వర్ణమాల & పదాలు
+    const achulu = ["అ", "ఆ", "ఇ", "ఈ", "ఉ", "ఊ", "ఋ", "ౠ", "ఎ", "ఏ", "ఐ", "ఒ", "ఓ", "ఔ", "అం", "అః"];
+    const hallulu = ["క", "ఖ", "గ", "ఘ", "ఙ", "చ", "ఛ", "జ", "ఝ", "ఞ", "ట", "ఠ", "డ", "ఢ", "ణ", "త", "థ", "ద", "ధ", "న", "ప", "ఫ", "బ", "భ", "మ", "య", "ర", "ల", "వ", "శ", "ష", "స", "హ", "ళ", "క్ష", "ఱ"];
+    const ottulu = ["క్ - క వత్తు", "గ్ - గ వత్తు", "చ్ - చ వత్తు", "ట్ - ట వత్తు", "త్ - త వత్తు", "ద్ - ద వత్తు", "న్ - న వత్తు", "ప్ - ప వత్తు", "మ్ - మ వత్తు", "య్ - య వత్తు", "ర్ - ర వత్తు", "ల్ - ల వత్తు", "వ్ - వ వత్తు"];
+
+    function createWordCards(containerId, list) {
+      const el = document.getElementById(containerId);
+      if(!el) return;
+      el.innerHTML = list.map(item => `
+        <div class="sound-card">
+          <span>${item}</span>
+          <i class="fa-solid fa-volume-high sound-icon" onclick="speakTelugu('${item.split('-')[0].trim()}')" title="ధ్వని వినండి"></i>
+        </div>
+      `).join('');
+    }
+
+    function generateList(baseWords, label) {
+      let res = [...baseWords];
+      while(res.length < 100) res.push(`${label} ${res.length + 1}`);
+      return res;
+    }
+
+    const achuluWords = generateList(["అరక", "ఆవు", "ఇల్లు", "ఈగ", "ఉడుత", "ఊయల", "ఋషి", "ఎలుక", "ఏనుగు", "ఐరావతం", "ఒంటె", "ఓడ", "ఔషధం", "అంబరం"], "అచ్చు పదం");
+    const halluluWords = generateList(["కలము", "ఖడ్గము", "గంట", "ఘటము", "చదరంగం", "ఛత్రము", "జలజ", "ఝషము", "టపాకాయ", "ఠవళము", "డమరుకం", "ఢంకా", "తబల", "దండ", "నగ", "పడవ", "ఫలము", "బలపం", "భజన", "మంచం", "యజ్ఞం", "రథం", "లత", "వల", "శంఖం", "షట్పది", "సరసం", "హంస"], "హల్లు పదం");
+    const saralaList = generateList(["అరక", "ఆలయం", "ఇల", "ఈగ", "ఉడత", "ఊయల", "కలము", "గడప", "చదరంగం", "జలజ", "తబల", "దండ", "నగ", "పడవ", "బలపం", "మంచం", "వల", "శనగ", "సవరం", "హలం", "వనము", "రణం", "కమలం", "గగనం", "భవనం", "నయనం", "పవనం", "సరళం", "తరగతి", "నటన"], "సరళ పదం");
+    const dvitvaList = generateList(["అమ్మ", "నాన్న", "అక్క", "చెల్లి", "తమ్ముడు", "కుక్క", "నక్క", "బస్సు", "గువ్వ", "పిట్ట", "మొగ్గ", "పువ్వు", "చెట్టు", "గిన్నె", "కప్ప", "బల్లి", "రొట్టె", "అద్దం", "ముద్ద", "సుద్ద"], "ద్విత్వ పదం");
+    const samyuktaList = generateList(["పుస్తకం", "సూర్యుడు", "చంద్రుడు", "మిత్రుడు", "విద్యార్థి", "ధర్మం", "కర్మ", "శాస్త్రం", "తీవ్రత", "వక్త్రం", "రాష్ట్రం", "రత్నం", "స్వప్నం", "శిల్పం", "వస్త్రం", "వ్యక్తి", "శక్తి", "భక్తి", "ముక్తి", "యుక్తి"], "సంయుక్త పదం");
+
+    createWordCards('achulu-container', achulu);
+    createWordCards('hallulu-container', hallulu);
+    createWordCards('ottulu-container', ottulu);
+    createWordCards('achulu-words-container', achuluWords);
+    createWordCards('hallulu-words-container', halluluWords);
+    createWordCards('sarala-container', saralaList);
+    createWordCards('dvitva-container', dvitvaList);
+    createWordCards('samyukta-container', samyuktaList);
+
+    // --- ఆన్‌లైన్ క్విజ్ నిర్వహణ డేటా ---
+    function getDefaultQuizzes() {
+      return [
+        { id: 101, sec: 'quiz', cls: '10', type: 'online_quiz', qText: "శతక మధురమ లో కవి ఎవరు?", optA: "మారన", optB: "గడియారం రామకృష్ణ శర్మ", optC: "నర్సయ్య", optD: "మారన", correct: "B", updatedOn: "01/01/2026" },
+        { id: 102, sec: 'quiz', cls: 'ramayanam', type: 'online_quiz', qText: "బాలకాండ లోని ముఖ్య ఘట్టం ఏమిటి?", optA: "సీతా స్వయంవరం", optB: "లంకా దహనం", optC: "వనవాసం", optD: "సేతు నిర్మాణం", correct: "A", updatedOn: "01/01/2026" },
+        { id: 103, sec: 'quiz', cls: 'grammar_quiz', type: 'online_quiz', qText: "'రాముడు బడికి వెళ్ళాడు' - ఇందులో ఏ కాలం ఉంది?", optA: "భూత కాలం", optB: "వర్తమాన కాలం", optC: "భవిష్యత్ కాలం", optD: "తద్ధర్మ కాలం", correct: "A", updatedOn: "01/01/2026" }
+      ];
+    }
+
+    function openAdminLogin() { document.getElementById('adminModal').style.display = 'flex'; showLoginScreen(); }
+    function closeAdmin() { document.getElementById('adminModal').style.display = 'none'; cancelEdit(); }
+
+    function logoutAdmin() {
+      isAdminLoggedIn = false;
+      document.getElementById('loginForm').style.display = 'block';
+      document.getElementById('uploadForm').style.display = 'none';
+      document.getElementById('forgotForm').style.display = 'none';
+      document.getElementById('adminPass').value = '';
+      toggleAdminControls(false);
+      closeAdmin();
+    }
+
+    function toggleAdminControls(show) {
+      document.querySelectorAll('.admin-controls').forEach(el => {
+        el.style.display = show ? 'block' : 'none';
+      });
+    }
+
+    function toggleUploadInputs() {
+      const type = document.getElementById('fileType').value;
+      document.getElementById('fileInputGroup').style.display = (type === 'image' || type === 'pdf') ? 'block' : 'none';
+    }
+
+    function toggleQuizFormFields() {
+      const sec = document.getElementById('uploadSec').value;
+      const quizFields = document.getElementById('quizFormFields');
+      const stdGroup = document.getElementById('standardTitleGroup');
+      const fileTypeGroup = document.getElementById('fileTypeGroup');
+      const urlGroup = document.getElementById('urlInputGroup');
+
+      if (sec === 'quiz') {
+        // అడ్మిన్ క్విజ్ ప్రశ్నలను కూడా ఎంటర్ చేయవచ్చు లేదా స్టాండర్డ్ ఫైల్ అప్‌లోడ్ చేయవచ్చు
+        if(confirm("మీరు ఆన్‌లైన్ క్విజ్ ప్రశ్నను జోడించాలనుకుంటున్నారా? (Cancel నొక్కితే సాధారణ PDF/లింక్ అప్‌లోడ్ చేసుకోవచ్చు)")) {
+          quizFields.style.display = 'block';
+          stdGroup.style.display = 'none';
+          fileTypeGroup.style.display = 'none';
+          urlGroup.style.display = 'none';
+          document.getElementById('fileType').value = 'online_quiz';
+        } else {
+          quizFields.style.display = 'none';
+          stdGroup.style.display = 'block';
+          fileTypeGroup.style.display = 'block';
+          urlGroup.style.display = 'block';
+          document.getElementById('fileType').value = 'pdf';
+        }
+      } else {
+        quizFields.style.display = 'none';
+        stdGroup.style.display = 'block';
+        fileTypeGroup.style.display = 'block';
+        urlGroup.style.display = 'block';
+      }
+    }
+
+    // సేవ్ & అప్‌డేట్
+    function saveUpload() {
+      const editId = document.getElementById('editItemId').value;
+      const sec = document.getElementById('uploadSec').value;
+      const cls = document.getElementById('uploadClass').value;
+      const type = document.getElementById('fileType').value;
+      const dateStr = new Date().toLocaleDateString('te-IN');
+
+      let data = JSON.parse(localStorage.getItem('vidyarthinidhi_items') || JSON.stringify(getDefaultQuizzes()));
+
+      if (type === 'online_quiz') {
+        const qText = document.getElementById('quizQText').value;
+        const optA = document.getElementById('quizOptA').value;
+        const optB = document.getElementById('quizOptB').value;
+        const optC = document.getElementById('quizOptC').value;
+        const optD = document.getElementById('quizOptD').value;
+        const correct = document.getElementById('quizCorrectOpt').value;
+
+        if (!qText || !optA || !optB) { alert("దయచేసి ప్రశ్న మరియు ఆప్షన్లు పూరించండి!"); return; }
+
+        if (editId) {
+          const idx = data.findIndex(i => i.id == editId);
+          if (idx !== -1) {
+            data[idx] = { id: Number(editId), sec, cls, type, qText, optA, optB, optC, optD, correct, updatedOn: dateStr };
+            alert("క్విజ్ ప్రశ్న విజయవంతంగా నవీకరించబడింది!");
+          }
+        } else {
+          data.push({ id: Date.now(), sec, cls, type, qText, optA, optB, optC, optD, correct, updatedOn: dateStr });
+          alert("కొత్త క్విజ్ ప్రశ్న శాశ్వతంగా జోడించబడింది!");
+        }
+
+        localStorage.setItem('vidyarthinidhi_items', JSON.stringify(data));
+        cancelEdit();
+        loadUploadedItems();
+        closeAdmin();
+        return;
+      }
+
+      // స్టాండర్డ్ ఫైల్ అప్‌లోడ్
+      const title = document.getElementById('uploadTitle').value;
+      let url = document.getElementById('uploadUrl').value;
+      if (!title) { alert("శీర్షిక రాయండి!"); return; }
+
+      const fileInput = document.getElementById('fileDirect');
+      if (fileInput.files.length > 0 && (type === 'image' || type === 'pdf')) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          commitSave(editId, sec, cls, title, type, e.target.result, dateStr, data);
+        };
+        reader.readAsDataURL(fileInput.files[0]);
+      } else {
+        commitSave(editId, sec, cls, title, type, url || "#", dateStr, data);
+      }
+    }
+
+    function commitSave(editId, sec, cls, title, type, link, dateStr, data) {
+      if (editId) {
+        const index = data.findIndex(i => i.id == editId);
+        if (index !== -1) {
+          data[index].sec = sec;
+          data[index].cls = cls;
+          data[index].title = title;
+          data[index].type = type;
+          if (link !== "#") data[index].link = link;
+          data[index].updatedOn = dateStr;
+          alert("అంశం విజయవంతంగా నవీకరించబడింది!");
+        }
+      } else {
+        data.push({ id: Date.now(), sec, cls, title, type, link, updatedOn: dateStr });
+        alert("కొత్త అంశం శాశ్వతంగా జోడించబడింది!");
+      }
+
+      localStorage.setItem('vidyarthinidhi_items', JSON.stringify(data));
+      cancelEdit();
+      loadUploadedItems();
+      closeAdmin();
+    }
+
+    function editItem(id) {
+      let data = JSON.parse(localStorage.getItem('vidyarthinidhi_items') || JSON.stringify(getDefaultQuizzes()));
+      const item = data.find(i => i.id == id);
+      if (!item) return;
+
+      openAdminLogin();
+      document.getElementById('loginForm').style.display = 'none';
+      document.getElementById('uploadForm').style.display = 'block';
+
+      document.getElementById('editItemId').value = item.id;
+      document.getElementById('uploadSec').value = item.sec;
+      document.getElementById('uploadClass').value = item.cls;
+
+      if (item.type === 'online_quiz') {
+        document.getElementById('quizFormFields').style.display = 'block';
+        document.getElementById('standardTitleGroup').style.display = 'none';
+        document.getElementById('fileTypeGroup').style.display = 'none';
+        document.getElementById('urlInputGroup').style.display = 'none';
+        document.getElementById('fileType').value = 'online_quiz';
+
+        document.getElementById('quizQText').value = item.qText;
+        document.getElementById('quizOptA').value = item.optA;
+        document.getElementById('quizOptB').value = item.optB;
+        document.getElementById('quizOptC').value = item.optC;
+        document.getElementById('quizOptD').value = item.optD;
+        document.getElementById('quizCorrectOpt').value = item.correct;
+      } else {
+        document.getElementById('uploadTitle').value = item.title;
+        document.getElementById('fileType').value = item.type;
+        document.getElementById('uploadUrl').value = item.link && !item.link.startsWith('data:') ? item.link : '';
+      }
+
+      document.getElementById('formHeading').innerHTML = '<i class="fa-solid fa-pen-to-square"></i> వివరాలు అప్‌డేట్ చేయండి';
+      document.getElementById('saveSubmitBtn').innerHTML = '<i class="fa-solid fa-arrows-rotate"></i> అప్‌డేట్ చేయండి';
+      document.getElementById('cancelEditBtn').style.display = 'inline-block';
+    }
+
+    function cancelEdit() {
+      document.getElementById('editItemId').value = '';
+      document.getElementById('uploadTitle').value = '';
+      document.getElementById('uploadUrl').value = '';
+      document.getElementById('fileDirect').value = '';
+      document.getElementById('quizFormFields').style.display = 'none';
+      document.getElementById('standardTitleGroup').style.display = 'block';
+      document.getElementById('fileTypeGroup').style.display = 'block';
+      document.getElementById('urlInputGroup').style.display = 'block';
+      document.getElementById('formHeading').innerHTML = '<i class="fa-solid fa-cloud-arrow-up"></i> అంశం అప్‌లోడ్ / అప్‌డేట్';
+      document.getElementById('saveSubmitBtn').innerHTML = '<i class="fa-solid fa-floppy-disk"></i> భద్రపరచు';
+      document.getElementById('cancelEditBtn').style.display = 'none';
+    }
+
+    function deleteItem(id) {
+      if(confirm("ఈ అంశాన్ని తొలగించాలనుకుంటున్నారా?")) {
+        let data = JSON.parse(localStorage.getItem('vidyarthinidhi_items') || JSON.stringify(getDefaultQuizzes()));
+        data = data.filter(i => i.id != id);
+        localStorage.setItem('vidyarthinidhi_items', JSON.stringify(data));
+        loadUploadedItems();
+      }
+    }
+
+    // ఆన్‌లైన్ క్విజ్ ఎవాల్యుయేషన్ (మార్కులు లెక్కించడం)
+    function evaluateQuiz(quizId, correctOpt) {
+      const selected = document.querySelector(`input[name="quiz_${quizId}"]:checked`);
+      const resBox = document.getElementById(`result_${quizId}`);
+      resBox.style.display = 'block';
+
+      if (!selected) {
+        resBox.style.background = '#ffeaa7';
+        resBox.style.color = '#d63031';
+        resBox.innerHTML = `⚠️ దయచేసి ఏదైనా ఒక ఆప్షన్ ఎంచుకోండి!`;
+        return;
+      }
+
+      if (selected.value === correctOpt) {
+        resBox.style.background = '#d4edda';
+        resBox.style.color = '#155724';
+        resBox.innerHTML = `🎉 అభినందనలు! మీ సమాధానం సరైనది (Correct Answer)! (+1 Mark)`;
+      } else {
+        resBox.style.background = '#f8d7da';
+        resBox.style.color = '#721c24';
+        resBox.innerHTML = `❌ తప్పు సమాధానం. సరైన సమాధానం: ఆప్షన్ (${correctOpt})`;
+      }
+    }
+
+    // డేటా లోడింగ్
+    function loadUploadedItems() {
+      const sections = ['textbooks', 'digital', 'grammar', 'exams', 'quiz', 'projects', 'extra'];
+      sections.forEach(s => {
+        const grid = document.getElementById(s + '-grid');
+        if (grid) grid.innerHTML = '';
+      });
+      const quizContainer = document.getElementById('quiz-questions-container');
+      if(quizContainer) quizContainer.innerHTML = '';
+
+      const data = JSON.parse(localStorage.getItem('vidyarthinidhi_items') || JSON.stringify(getDefaultQuizzes()));
+
+      if(data.length > 0) {
+        const latest = data[data.length - 1];
+        document.getElementById('recentUpdateTicker').innerText = `తాజా అప్‌డేట్: "${latest.title || latest.qText}" విజయవంతంగా నవీకరించబడింది.`;
+      }
+
+      data.forEach(item => {
+        if (item.type === 'online_quiz' && item.sec === 'quiz') {
+          // ఆన్‌లైన్ క్విజ్ కార్డ్ రెండరింగ్
+          if(quizContainer) {
+            const qCard = document.createElement('div');
+            qCard.className = `quiz-container item-class-${item.cls}`;
+            qCard.setAttribute('data-quiz-class', item.cls);
+            qCard.innerHTML = `
+              <span class="badge"><i class="fa-solid fa-circle-question"></i> తరగతి/విభాగం: ${item.cls}</span>
+              ${item.updatedOn ? `<span class="updated-badge"><i class="fa-solid fa-clock-rotate-left"></i> ${item.updatedOn}</span>` : ''}
+              <div class="quiz-question">${item.qText}</div>
+              <div class="quiz-options">
+                <label class="quiz-option-label"><input type="radio" name="quiz_${item.id}" value="A"> A) ${item.optA}</label>
+                <label class="quiz-option-label"><input type="radio" name="quiz_${item.id}" value="B"> B) ${item.optB}</label>
+                ${item.optC ? `<label class="quiz-option-label"><input type="radio" name="quiz_${item.id}" value="C"> C) ${item.optC}</label>` : ''}
+                ${item.optD ? `<label class="quiz-option-label"><input type="radio" name="quiz_${item.id}" value="D"> D) ${item.optD}</label>` : ''}
+              </div>
+              <button class="btn" style="background:var(--green);" onclick="evaluateQuiz(${item.id}, '${item.correct}')"><i class="fa-solid fa-check-to-slot"></i> సమాధానం తనిఖీ చేయి</button>
+              <div id="result_${item.id}" class="quiz-result-box"></div>
+
+              <div class="admin-controls" style="${isAdminLoggedIn ? 'display:block;' : 'display:none;'} margin-top:10px;">
+                <button onclick="editItem(${item.id})" class="btn btn-edit"><i class="fa-solid fa-pen"></i> ఎడిట్</button>
+                <button onclick="deleteItem(${item.id})" class="btn btn-del"><i class="fa-solid fa-trash"></i> తొలగించు</button>
+              </div>
+            `;
+            quizContainer.appendChild(qCard);
+          }
+        } else {
+          const grid = document.getElementById(item.sec + '-grid');
+          if (grid) {
+            const card = document.createElement('div');
+            card.className = `item-card item-class-${item.cls}`;
+            
+            let btnIcon = "fa-arrow-up-right-from-square";
+            let btnText = "వ్యూ (View)";
+            if(item.type === 'youtube') { btnIcon = "fa-brands fa-youtube"; btnText = "చూడండి"; }
+            else if(item.type === 'pdf') { btnIcon = "fa-file-pdf"; btnText = "డౌన్‌లోడ్ / వ్యూ"; }
+            else if(item.type === 'ppt') { btnIcon = "fa-file-powerpoint"; btnText = "స్లైడ్స్ వ్యూ"; }
+
+            card.innerHTML = `
+              <div>
+                <span class="badge"><i class="fa-solid fa-tag"></i> ${item.cls}వ తరగతి / విభాగం</span>
+                ${item.updatedOn ? `<span class="updated-badge"><i class="fa-solid fa-clock-rotate-left"></i> ${item.updatedOn}</span>` : ''}
+              </div>
+              <h4>${item.title}</h4>
+              <p style="font-size:0.85rem; color:#636e72; margin-bottom:12px;"><i class="fa-solid fa-file"></i> ${item.type.toUpperCase()}</p>
+              <a href="${item.link}" target="_blank" class="btn"><i class="fa-solid ${btnIcon}"></i> ${btnText}</a>
+              
+              <div class="admin-controls" style="${isAdminLoggedIn ? 'display:block;' : 'display:none;'}">
+                <button onclick="editItem(${item.id})" class="btn btn-edit"><i class="fa-solid fa-pen"></i> అప్‌డేట్</button>
+                <button onclick="deleteItem(${item.id})" class="btn btn-del"><i class="fa-solid fa-trash"></i> తొలగించు</button>
+              </div>
+            `;
+            grid.appendChild(card);
+          }
+        }
+      });
+    }
+
+    function filterClass(section, cls, btnElement) {
+      const btns = document.querySelectorAll(`#${section} .class-btn`);
+      btns.forEach(b => b.classList.remove('active'));
+      if(btnElement) btnElement.classList.add('active');
+
+      const cards = document.querySelectorAll(`#${section}-grid .item-card`);
+      cards.forEach(card => {
+        if (cls === 'all' || card.classList.contains(`item-class-${cls}`)) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    function filterQuiz(cls, btnElement) {
+      const btns = document.querySelectorAll(`#quiz .class-btn`);
+      btns.forEach(b => b.classList.remove('active'));
+      if(btnElement) btnElement.classList.add('active');
+
+      // ఆన్‌లైన్ క్విజ్ ఫిల్టరింగ్
+      const qCards = document.querySelectorAll('#quiz-questions-container .quiz-container');
+      qCards.forEach(card => {
+        const cClass = card.getAttribute('data-quiz-class');
+        if (cls === 'all' || cClass === cls) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      // అడ్మిన్ క్విజ్ ఫైల్స్ ఫిల్టరింగ్
+      const cards = document.querySelectorAll(`#quiz-grid .item-card`);
+      cards.forEach(card => {
+        if (cls === 'all' || card.classList.contains(`item-class-${cls}`)) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    function exportDataBackup() {
+      const data = localStorage.getItem('vidyarthinidhi_items') || '[]';
+      const blob = new Blob([data], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `vidyarthinidhi_backup_${Date.now()}.json`;
+      a.click();
+      URL.revokeObjectURL(url);
+      alert("బ్యాకప్ ఫైల్ విజయవంతంగా డౌన్‌లోడ్ అయింది!");
+    }
+
+    function importDataBackup(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        try {
+          const parsed = JSON.parse(e.target.result);
+          localStorage.setItem('vidyarthinidhi_items', JSON.stringify(parsed));
+          alert("డేటా పునరుద్ధరించబడింది (Restored)!");
+          loadUploadedItems();
+        } catch (err) {
+          alert("సరైన బ్యాకప్ ఫైల్ ఎంచుకోండి.");
+        }
+      };
+      reader.readAsText(file);
+    }
+
+    loadUploadedItems();
+  </script>
+</body>
+</html>
