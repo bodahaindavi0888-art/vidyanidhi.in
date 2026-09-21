@@ -420,3 +420,322 @@
         </div>
         <button class="btn" onclick="verifyAdmin()"><i class="fa-solid fa-right-to-bracket"></i> లాగిన్</button>
       </div>
+
+      <div id="uploadForm" style="display:none;">
+        <h3 id="formHeading" style="color:var(--violet); margin-bottom:15px;"><i class="fa-solid fa-cloud-arrow-up"></i> లైవ్ క్లౌడ్ అప్‌లోడ్</h3>
+        <input type="hidden" id="editDocId" value="">
+
+        <div class="form-group">
+          <label>విభాగం</label>
+          <select id="uploadSec" onchange="toggleQuizFormFields()">
+            <option value="textbooks">పాఠ్య పుస్తకాలు</option>
+            <option value="digital">డిజిటల్ పాఠాలు</option>
+            <option value="grammar">వ్యాకరణం</option>
+            <option value="exams">మాదిరి ప్రశ్నలు & పరీక్షలు</option>
+            <option value="quiz">క్విజ్</option>
+            <option value="projects">ప్రాజెక్టులు & సమీక్షలు</option>
+            <option value="extra">అదనపు సమాచారం</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>తరగతి</label>
+          <select id="uploadClass">
+            <option value="6">6వ తరగతి</option>
+            <option value="7">7వ తరగతి</option>
+            <option value="8">8వ తరగతి</option>
+            <option value="9">9వ తరగతి</option>
+            <option value="10">10వ తరగతి</option>
+            <option value="ramayanam">రామాయణం</option>
+            <option value="grammar_quiz">వ్యాకరణం</option>
+          </select>
+        </div>
+
+        <!-- క్విజ్ ప్రశ్నల ఫీల్డ్స్ -->
+        <div id="quizFormFields" style="display:none; background:#fffdf4; padding:12px; border:1px solid #f1c40f; border-radius:8px; margin-bottom:12px;">
+          <div class="form-group"><label>ప్రశ్న (Question)</label><input type="text" id="quizQText"></div>
+          <div class="form-group"><label>ఆప్షన్ A</label><input type="text" id="quizOptA"></div>
+          <div class="form-group"><label>ఆప్షన్ B</label><input type="text" id="quizOptB"></div>
+          <div class="form-group"><label>ఆప్షన్ C</label><input type="text" id="quizOptC"></div>
+          <div class="form-group"><label>ఆప్షన్ D</label><input type="text" id="quizOptD"></div>
+          <div class="form-group"><label>సరియైన ఆప్షన్</label><select id="quizCorrectOpt"><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option></select></div>
+        </div>
+
+        <div class="form-group" id="stdTitleGroup">
+          <label>పాఠం శీర్షిక (Title)</label>
+          <input type="text" id="uploadTitle" placeholder="పాఠం లేదా ఫైల్ పేరు">
+        </div>
+
+        <div class="form-group" id="stdFileTypeGroup">
+          <label>ఫైల్ రకం</label>
+          <select id="fileType">
+            <option value="pdf">PDF ఫైల్</option>
+            <option value="image">చిత్రం (JPG / PNG)</option>
+            <option value="ppt">స్లైడ్స్ (PPT)</option>
+            <option value="youtube">యూట్యూబ్ వీడియో (YouTube)</option>
+          </select>
+        </div>
+
+        <div class="form-group" id="stdUrlGroup">
+          <label>డౌన్‌లోడ్ / వ్యూ లింక్ (Google Drive లేదా YouTube లింక్)</label>
+          <input type="text" id="uploadUrl" placeholder="https://drive.google.com/... లేదా https://youtu.be/...">
+        </div>
+
+        <div style="margin-top:15px; display:flex; gap:10px;">
+          <button class="btn" id="saveSubmitBtn" onclick="saveToCloud()"><i class="fa-solid fa-cloud"></i> క్లౌడ్‌లో భద్రపరచు</button>
+          <button class="btn btn-del" onclick="logoutAdmin()">లాగౌట్</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // -------------------------------------------------------------
+    // మీ ఒరిజినల్ ఫైర్‌బేస్ కీస్[span_5](start_span)[span_5](end_span)
+    // -------------------------------------------------------------
+    const firebaseConfig = {
+      apiKey: "AIzaSyBUEcgVmbN4yQbxWLi4pw8QwnXH0J83xZM",
+      authDomain: "vidyathinidhi.firebaseapp.com",
+      projectId: "vidyathinidhi",
+      storageBucket: "vidyathinidhi.firebasestorage.app",
+      messagingSenderId: "636764709147",
+      appId: "1:636764709147:web:efb0b66cc09daf945033be",
+      measurementId: "G-TH952HDRK3"
+    };
+
+    let db = null;
+    let isCloudReady = false;
+    try {
+      firebase.initializeApp(firebaseConfig);
+      db = firebase.firestore();
+      isCloudReady = true;
+    } catch(e) { console.log(e); }
+
+    let isAdminLoggedIn = false;
+
+    function showSection(id, el) {
+      document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+      document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      el.classList.add('active');
+      window.scrollTo({top:0, behavior:'smooth'});
+    }
+
+    function speakTelugu(t) {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        const u = new SpeechSynthesisUtterance(t);
+        u.lang = 'te-IN';
+        u.rate = 0.85;
+        window.speechSynthesis.speak(u);
+      }
+    }
+
+    const achulu = ["అ", "ఆ", "ఇ", "ఈ", "ఉ", "ఊ", "ఋ", "ౠ", "ఎ", "ఏ", "ఐ", "ఒ", "ఓ", "ఔ", "అం", "అః"];
+    const hallulu = ["క", "ఖ", "గ", "ఘ", "ఙ", "చ", "ఛ", "జ", "ఝ", "ఞ", "ట", "ఠ", "డ", "ఢ", "ణ", "త", "థ", "ద", "ధ", "న", "ప", "ఫ", "బ", "భ", "మ", "య", "ర", "ల", "వ", "శ", "ష", "స", "హ", "ళ", "క్ష", "ఱ"];
+    const ottulu = ["క్ - క వత్తు", "గ్ - గ వత్తు", "చ్ - చ వత్తు", "ట్ - ట వత్తు", "త్ - త వత్తు", "ద్ - ద వత్తు", "న్ - న వత్తు", "ప్ - ప వత్తు", "మ్ - మ వత్తు"];
+
+    function createWords(id, list) {
+      const el = document.getElementById(id);
+      if(!el) return;
+      el.innerHTML = list.map(i => `
+        <div class="sound-card">
+          <span>${i}</span>
+          <i class="fa-solid fa-volume-high sound-icon" onclick="speakTelugu('${i.split('-')[0].trim()}')"></i>
+        </div>
+      `).join('');
+    }
+
+    function generateList(base, lbl) {
+      let r = [...base];
+      while(r.length < 100) r.push(${lbl} ${r.length+1});
+      return r;
+    }
+
+    createWords('achulu-container', achulu);
+    createWords('hallulu-container', hallulu);
+    createWords('ottulu-container', ottulu);
+    createWords('achulu-words-container', generateList(["అరక","ఆవు","ఇల్లు","ఈగ","ఉడుత"], "అచ్చు పదం"));
+    createWords('hallulu-words-container', generateList(["కలము","ఖడ్గము","గంట","ఘటము"], "హల్లు పదం"));
+    createWords('sarala-container', generateList(["అరక","ఆలయం","ఇల","ఈగ","ఉడత"], "సరళ పదం"));
+    createWords('dvitva-container', generateList(["అమ్మ","నాన్న","అక్క","చెల్లి"], "ద్విత్వ పదం"));
+    createWords('samyukta-container', generateList(["పుస్తకం","సూర్యుడు","చంద్రుడు"], "సంయుక్త పదం"));
+
+    function openAdminLogin() { document.getElementById('adminModal').style.display = 'flex'; }
+    function closeAdmin() { document.getElementById('adminModal').style.display = 'none'; }
+
+    function verifyAdmin() {
+      if (document.getElementById('adminPass').value === "admin123") {
+        isAdminLoggedIn = true;
+        document.getElementById('loginForm').style.display = 'none';
+        document.getElementById('uploadForm').style.display = 'block';
+        document.querySelectorAll('.admin-controls').forEach(el => el.style.display = 'block');
+      } else { alert("తప్పుడు పాస్‌వర్డ్!"); }
+    }
+
+    function logoutAdmin() {
+      isAdminLoggedIn = false;
+      document.getElementById('loginForm').style.display = 'block';
+      document.getElementById('uploadForm').style.display = 'none';
+      document.getElementById('adminPass').value = '';
+      document.querySelectorAll('.admin-controls').forEach(el => el.style.display = 'none');
+      closeAdmin();
+    }
+
+    function toggleQuizFormFields() {
+      const s = document.getElementById('uploadSec').value;
+      const isQ = (s === 'quiz');
+      document.getElementById('quizFormFields').style.display = isQ ? 'block' : 'none';
+      document.getElementById('stdTitleGroup').style.display = isQ ? 'none' : 'block';
+      document.getElementById('stdFileTypeGroup').style.display = isQ ? 'none' : 'block';
+      document.getElementById('stdUrlGroup').style.display = isQ ? 'none' : 'block';
+    }
+
+    async function saveToCloud() {
+      const docId = document.getElementById('editDocId').value;
+      const sec = document.getElementById('uploadSec').value;
+      const cls = document.getElementById('uploadClass').value;
+      const updatedOn = new Date().toLocaleDateString('te-IN');
+
+      let itemData = { sec, cls, updatedOn, timestamp: Date.now() };
+
+      if (sec === 'quiz') {
+        itemData.type = 'online_quiz';
+        itemData.qText = document.getElementById('quizQText').value;
+        itemData.optA = document.getElementById('quizOptA').value;
+        itemData.optB = document.getElementById('quizOptB').value;
+        itemData.optC = document.getElementById('quizOptC').value;
+        itemData.optD = document.getElementById('quizOptD').value;
+        itemData.correct = document.getElementById('quizCorrectOpt').value;
+        if (!itemData.qText) { alert("ప్రశ్న నమోదు చేయండి!"); return; }
+      } else {
+        itemData.title = document.getElementById('uploadTitle').value;
+        itemData.type = document.getElementById('fileType').value;
+        itemData.link = document.getElementById('uploadUrl').value;
+        if (!itemData.title || !itemData.link) { alert("శీర్షిక & లింక్ తప్పనిసరి!"); return; }
+      }
+
+      try {
+        if (isCloudReady && db) {
+          if (docId) {
+            await db.collection("materials").doc(docId).update(itemData);
+            alert("నవీకరించబడింది (Updated)!");
+          } else {
+            await db.collection("materials").add(itemData);
+            alert("క్లౌడ్‌లో సేవ్ చేయబడింది! అందరికీ కనిపిస్తుంది.");
+          }
+        }
+      } catch(err) { alert("Error: " + err.message); }
+
+      document.getElementById('editDocId').value = '';
+      document.getElementById('uploadTitle').value = '';
+      document.getElementById('uploadUrl').value = '';
+      document.getElementById('quizQText').value = '';
+      closeAdmin();
+    }
+
+    function listenToCloudUpdates() {
+      if (isCloudReady && db) {
+        db.collection("materials").orderBy("timestamp", "desc").onSnapshot(snap => {
+          const items = [];
+          snap.forEach(d => items.push({ id: d.id, ...d.data() }));
+          renderItems(items);
+        });
+      }
+    }
+
+    function evaluateQuiz(qid, ans) {
+      const sel = document.querySelector(input[name="q_${qid}"]:checked);
+      const b = document.getElementById(res_${qid});
+      b.style.display = 'block';
+      if(!sel) { b.innerText = "దయచేసి ఆప్షన్ ఎంచుకోండి!"; b.style.color="red"; return; }
+      if(sel.value === ans) { b.innerText = "🎉 సరైన సమాధానం (+1 Mark)!"; b.style.color="green"; }
+      else { b.innerText = ❌ తప్పు సమాధానం. సరియైనది: (${ans}); b.style.color="red"; }
+    }
+
+    function renderItems(items) {
+      ['textbooks', 'digital', 'grammar', 'exams', 'quiz', 'projects', 'extra'].forEach(s => {
+        const g = document.getElementById(s + '-grid');
+        if (g) g.innerHTML = '';
+      });
+      const qC = document.getElementById('quiz-questions-container');
+      if (qC) qC.innerHTML = '';
+
+      if (items.length > 0) {
+        document.getElementById('recentUpdateTicker').innerText = తాజా అప్‌డేట్: "${items[0].title || items[0].qText}" లైవ్‌గా చేర్చబడింది.;
+      }
+
+      items.forEach(item => {
+        if (item.type === 'online_quiz') {
+          if (qC) {
+            const card = document.createElement('div');
+            card.className = quiz-container item-class-${item.cls};
+            card.innerHTML = `
+              <span class="badge">${item.cls}వ తరగతి / విభాగం</span>
+              <div class="quiz-question">${item.qText}</div>
+              <div class="quiz-options">
+                <label class="quiz-option-label"><input type="radio" name="q_${item.id}" value="A"> A) ${item.optA}</label>
+                <label class="quiz-option-label"><input type="radio" name="q_${item.id}" value="B"> B) ${item.optB}</label>
+                ${item.optC ? <label class="quiz-option-label"><input type="radio" name="q_${item.id}" value="C"> C) ${item.optC}</label> : ''}
+                ${item.optD ? <label class="quiz-option-label"><input type="radio" name="q_${item.id}" value="D"> D) ${item.optD}</label> : ''}
+              </div>
+              <button class="btn" style="background:var(--green);" onclick="evaluateQuiz('${item.id}', '${item.correct}')">సమాధానం తనిఖీ చేయి</button>
+              <div id="res_${item.id}" class="quiz-result-box"></div>
+              <div class="admin-controls" style="${isAdminLoggedIn ? 'display:block;' : 'display:none;'}">
+                <button onclick="deleteCloudItem('${item.id}')" class="btn btn-del"><i class="fa-solid fa-trash"></i> తొలగించు</button>
+              </div>
+            `;
+            qC.appendChild(card);
+          }
+        } else {
+          const grid = document.getElementById(item.sec + '-grid');
+          if (grid) {
+            const card = document.createElement('div');
+            card.className = item-card item-class-${item.cls};
+            card.innerHTML = `
+              <div>
+                <span class="badge">${item.cls}వ తరగతి / విభాగం</span>
+                ${item.updatedOn ? <span class="updated-badge"><i class="fa-solid fa-clock"></i> ${item.updatedOn}</span> : ''}
+              </div>
+              <h4 style="margin:8px 0;">${item.title}</h4>
+              <p style="font-size:0.85rem; color:#666; margin-bottom:10px;">రకం: ${item.type.toUpperCase()}</p>
+              <div class="btn-group">
+                <a href="${item.link}" target="_blank" class="btn"><i class="fa-solid fa-eye"></i> వ్యూ (View)</a>
+                <a href="${item.link}" target="_blank" download class="btn btn-download"><i class="fa-solid fa-download"></i> డౌన్‌లోడ్</a>
+              </div>
+              <div class="admin-controls" style="${isAdminLoggedIn ? 'display:block;' : 'display:none;'}">
+                <button onclick="deleteCloudItem('${item.id}')" class="btn btn-del"><i class="fa-solid fa-trash"></i> డిలీట్</button>
+              </div>
+            `;
+            grid.appendChild(card);
+          }
+        }
+      });
+    }
+
+    async function deleteCloudItem(id) {
+      if (confirm("తొలగించాలనుకుంటున్నారా? అందరికీ డిలీట్ అవుతుంది.")) {
+        if (isCloudReady && db) await db.collection("materials").doc(id).delete();
+      }
+    }
+
+    function filterClass(sec, cls, el) {
+      document.querySelectorAll(#${sec} .class-btn).forEach(b => b.classList.remove('active'));
+      el.classList.add('active');
+      document.querySelectorAll(#${sec}-grid .item-card).forEach(c => {
+        c.style.display = (cls === 'all' || c.classList.contains(item-class-${cls})) ? 'block' : 'none';
+      });
+    }
+
+    function filterQuiz(cls, el) {
+      document.querySelectorAll(#quiz .class-btn).forEach(b => b.classList.remove('active'));
+      el.classList.add('active');
+      document.querySelectorAll('#quiz-questions-container .quiz-container').forEach(c => {
+        c.style.display = (cls === 'all' || c.classList.contains(item-class-${cls})) ? 'block' : 'none';
+      });
+    }
+
+    listenToCloudUpdates();
+  </script>
+</body>
+</html>
