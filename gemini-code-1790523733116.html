@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>విద్యార్థినిధి - తెలుగు విద్యా సర్వస్వం | Vidyanidhi.in</title>
+  <meta name="description" content="విద్యార్థినిధి (Vidyanidhi.in) - 6 నుండి 10వ తరగతి విద్యార్థుల సమగ్ర విద్యా వేదిక.">
+  <link rel="canonical" href="https://vidyanidhi.in/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Mandali&family=Ramabhadra&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --rb: linear-gradient(135deg, #ef4444, #f97316, #f59e0b, #10b981, #0284c7, #4b0082, #8a2be2);
+      --sh: 0 6px 20px rgba(0,0,0,0.06);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Mandali', sans-serif; font-size: 16.5px; }
+    body { background: #fffdfa; color: #0f172a; line-height: 1.75; overflow-x: hidden; }
+    .rb-top { height: 6px; background: var(--rb); }
+    header { background: #fff; box-shadow: var(--sh); position: sticky; top: 0; z-index: 100; border-bottom: 2px solid #fed7aa; padding: 10px 16px; }
+    .h-wrap { max-width: 1350px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+    .brand { display: flex; align-items: center; gap: 10px; cursor: pointer; }
+    .b-logo { width: 44px; height: 44px; border-radius: 12px; background: var(--rb); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 22px; cursor: pointer; user-select: none; }
+    .b-txt h1 { font-family: 'Ramabhadra'; font-size: 26px; background: var(--rb); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .srch-box { display: flex; gap: 6px; flex: 1; max-width: 480px; min-width: 260px; }
+    .srch-box input { flex: 1; padding: 8px 14px; border: 2px solid #fed7aa; border-radius: 25px; outline: none; background: #fffaf5; }
+    .btn-g { background: linear-gradient(135deg,#4285F4,#34A853); color: #fff; border: none; padding: 8px 14px; border-radius: 25px; font-weight: 700; cursor: pointer; white-space: nowrap; }
+    nav { background: #fff; border-bottom: 2px solid #e2e8f0; padding: 6px 10px; overflow-x: auto; }
+    .n-wrap { max-width: 1350px; margin: 0 auto; display: flex; gap: 6px; justify-content: center; flex-wrap: wrap; }
+    .n-btn { padding: 7px 12px; border: 1.5px solid #cbd5e1; background: #f8fafc; font-weight: 700; color: #334155; border-radius: 10px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; }
+    .n-btn.active { background: #fee2e2; color: #dc2626; border-color: #fca5a5; }
+    
+    /* అడ్మిన్ బార్ */
+    #adminBar { display: none; background: #1e1b4b; color: #fff; padding: 8px 16px; }
+    .adm-flex { max-width: 1350px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+
+    main { max-width: 1350px; margin: 20px auto; padding: 0 14px; min-height: 72vh; }
+    .sec { display: none; }
+    .sec.active { display: block; animation: popIn 0.25s ease; }
+    @keyframes popIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+    .hero { background: var(--rb); border-radius: 20px; padding: 26px; color: #fff; margin-bottom: 20px; }
+    .hero h2 { font-family: 'Ramabhadra'; font-size: 28px; margin-bottom: 6px; }
+    .p-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin: 18px 0; }
+    .p-card { background: #fff; border-radius: 16px; padding: 18px; box-shadow: var(--sh); border-top: 5px solid #ef4444; }
+    .prof { background: #fff; border-radius: 18px; padding: 22px; box-shadow: var(--sh); border: 2.5px solid #fde047; display: grid; grid-template-columns: 140px 1fr; gap: 20px; align-items: center; margin-top: 20px; }
+    .p-badge { width: 130px; height: 130px; border-radius: 18px; background: var(--rb); color: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 0 auto; }
+    .c-box { background: #fff; border-radius: 14px; padding: 8px 12px; display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 16px; border: 1.5px solid #fed7aa; }
+    .c-pill, .s-pill { padding: 6px 14px; border-radius: 50px; border: 1.5px solid #cbd5e1; background: #f8fafc; font-weight: 700; color: #334155; cursor: pointer; }
+    .c-pill.active, .s-pill.active { background: #0284c7; color: #fff; border-color: transparent; }
+    .sub-panel { display: none; }
+    .sub-panel.active { display: block; }
+    .res-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 16px; margin-top: 14px; }
+    .card { background: #fff; border-radius: 16px; padding: 16px; box-shadow: var(--sh); border: 1.5px solid #e2e8f0; display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden; }
+    .card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 5px; background: var(--rb); }
+    .c-badge { display: inline-flex; align-items: center; gap: 5px; padding: 3px 8px; border-radius: 6px; font-size: 12px; font-weight: 800; margin-bottom: 8px; background: #fee2e2; color: #dc2626; border: 1px solid #fca5a5; width: fit-content; }
+    .card-title { font-size: 17.5px; font-weight: 800; color: #0f172a; margin-bottom: 12px; word-break: break-word; }
+    .c-btns { display: flex; gap: 8px; margin-top: auto; }
+    .btn-v { flex: 1; padding: 8px; border-radius: 8px; border: 2px solid #c7d2fe; background: #eef2ff; color: #4338ca; font-weight: 800; cursor: pointer; text-align: center; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 5px; }
+    .btn-v:hover { background: #4338ca; color: #fff; }
+    .btn-d { flex: 1; padding: 8px; border-radius: 8px; border: none; background: #10b981; color: #fff; font-weight: 800; cursor: pointer; text-align: center; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 5px; }
+    .btn-d:hover { background: #059669; }
+    
+    .btn-del { display: none; background: #fee2e2; color: #dc2626; border: 1.5px solid #fca5a5; padding: 8px 12px; border-radius: 8px; cursor: pointer; font-size: 14px; font-weight: 800; }
+    .btn-del:hover { background: #dc2626; color: #fff; }
+    body.is-admin-logged .btn-del { display: inline-flex; align-items: center; justify-content: center; gap: 4px; }
+
+    .w-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 8px; max-height: 380px; overflow-y: auto; }
+    .w-card { background: #f8fafc; border-radius: 12px; padding: 10px; display: flex; justify-content: space-between; align-items: center; border: 1.5px solid #cbd5e1; cursor: pointer; }
+    .ppt { background: #fffbeb; border-radius: 14px; padding: 16px; border-left: 6px solid #f97316; margin-bottom: 14px; }
+    .ppt h3 { font-family: 'Ramabhadra'; font-size: 20px; color: #1e1b4b; margin-bottom: 8px; }
+    
+    .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.65); z-index: 1000; align-items: center; justify-content: center; padding: 14px; }
+    .modal.active { display: flex; }
+    .m-box { background: #fff; border-radius: 18px; width: 100%; max-width: 480px; padding: 22px; border: 2.5px solid #fed7aa; }
+    .f-grp { margin-bottom: 12px; }
+    .f-grp label { display: block; font-weight: 800; font-size: 14px; margin-bottom: 3px; }
+    .f-inp { width: 100%; padding: 9px 12px; border-radius: 8px; border: 1.5px solid #cbd5e1; outline: none; }
+    .btn-sub { width: 100%; padding: 11px; background: linear-gradient(135deg, #10b981, #059669); color: #fff; border: none; border-radius: 10px; font-weight: 800; cursor: pointer; font-size: 16px; }
+
+    /* యూనివర్సల్ వ్యూవర్ మోడల్ */
+    .v-card { background: #fff; border-radius: 18px; width: 95%; max-width: 1050px; height: 88vh; padding: 14px; display: flex; flex-direction: column; border: 3px solid #fed7aa; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+    .v-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; border-bottom: 1.5px solid #e2e8f0; padding-bottom: 8px; }
+    .v-body { flex: 1; overflow: hidden; border-radius: 10px; background: #f8fafc; border: 1px solid #cbd5e1; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; }
+    @media(max-width:768px){.prof{grid-template-columns:1fr;text-align:center;}}
+  </style>
+</head>
+<body>
+
+  <div class="rb-top"></div>
+
+  <header>
+    <div class="h-wrap">
+      <div class="brand">
+        <div class="b-logo" id="admTrig" title="రహస్య అడ్మిన్ లాగిన్ (3 సార్లు క్లిక్ చేయండి)"><i class="fa-solid fa-graduation-cap"></i></div>
+        <div class="b-txt" onclick="goSec('mungili')">
+          <h1>విద్యార్థినిధి</h1>
+          <p style="font-size:12.5px;color:#d97706;font-weight:800;">తెలుగు విద్యా సర్వస్వం</p>
+        </div>
+      </div>
+      <div class="srch-box">
+        <input type="text" id="srchIpt" placeholder="పాఠం లేదా పదాన్ని వెతకండి..." oninput="filterLocal(this.value)">
+        <button class="btn-g" onclick="runGoogle()"><i class="fa-brands fa-google"></i> గూగుల్</button>
+      </div>
+    </div>
+  </header>
+
+  <nav>
+    <div class="n-wrap">
+      <button class="n-btn active" data-t="mungili" onclick="goSec('mungili')"><i class="fa-solid fa-house" style="color:#ef4444;"></i> ముంగిలి</button>
+      <button class="n-btn" data-t="learning" onclick="goSec('learning')"><i class="fa-solid fa-volume-high" style="color:#f97316;"></i> భాషా అభ్యసనం</button>
+      <button class="n-btn" data-t="grammar" onclick="goSec('grammar')"><i class="fa-solid fa-spell-check" style="color:#f59e0b;"></i> వ్యాకరణం</button>
+      <button class="n-btn" data-t="textbooks" onclick="goSec('textbooks')"><i class="fa-solid fa-book-bookmark" style="color:#10b981;"></i> పుస్తకాలు & పాఠాలు</button>
+      <button class="n-btn" data-t="exams" onclick="goSec('exams')"><i class="fa-solid fa-file-pen" style="color:#4b0082;"></i> మాదిరి ప్రశ్నలు</button>
+      <button class="n-btn" data-t="quiz" onclick="goSec('quiz')"><i class="fa-solid fa-circle-question" style="color:#8a2be2;"></i> క్విజ్</button>
+      <button class="n-btn" data-t="projects" onclick="goSec('projects')"><i class="fa-solid fa-diagram-project" style="color:#ec4899;"></i> ప్రాజెక్టులు & సమీక్షలు</button>
+      <button class="n-btn" data-t="extra" onclick="goSec('extra')"><i class="fa-solid fa-folder-plus" style="color:#ea580c;"></i> అదనపు సమాచారం</button>
+    </div>
+  </nav>
+
+  <div id="adminBar">
+    <div class="adm-flex">
+      <b><i class="fa-solid fa-shield-halved" style="color:#4ade80;"></i> అడ్మిన్ ప్యానెల్ (బి. ప్రవీణ్ కుమార్ గారు)</b>
+      <div style="display:flex;gap:8px;">
+        <button onclick="openUpM()" style="background:#10b981;color:#fff;border:none;padding:8px 16px;border-radius:8px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:6px;">
+          <i class="fa-solid fa-cloud-arrow-up"></i> ఫైల్ / లింక్ అప్‌లోడ్ చేయండి
+        </button>
+        <button onclick="openM('pinM')" style="background:#f59e0b;color:#fff;border:none;padding:8px 12px;border-radius:8px;font-weight:800;cursor:pointer;"><i class="fa-solid fa-key"></i> పిన్ మార్చు</button>
+        <button onclick="logout()" style="background:#ef4444;color:#fff;border:none;padding:8px 12px;border-radius:8px;font-weight:800;cursor:pointer;"><i class="fa-solid fa-right-from-bracket"></i> లాగౌట్</button>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <!-- 1. ముంగిలి -->
+    <section id="sec-mungili" class="sec active">
+      <div class="hero">
+        <h2>తెలుగు భాషా అభ్యసన విద్యా సర్వస్వం</h2>
+        <p>6 నుండి 10వ తరగతి విద్యార్థులకు అవసరమైన భాషా అభ్యసనం, వ్యాకరణం, పాఠ్య పుస్తకాలు, డిజిటల్ పాఠాలు, ప్రాజెక్టులు & ప్రణాళికలు శాశ్వతంగా నిక్షిప్తం చేయబడ్డాయి.</p>
+      </div>
+      <div class="p-grid">
+        <div class="p-card">
+          <h3>భాషా అభ్యసనం</h3>
+          <p>వర్ణమాల, గుణింతాలు, సరళ, ద్విత్వ, సంయుక్త, సంశ్లేష పదాలు (20 చొప్పున) ఆడియో శబ్దోచ్ఛారణతో.</p>
+        </div>
+        <div class="p-card" style="border-top-color:#10b981;">
+          <h3>పుస్తకాలు & డిజిటల్ పాఠాలు</h3>
+          <p>పాఠ్య పుస్తకాలు మరియు డిజిటల్ తరగతులన్నీ 6-10 తరగతుల వారీగా ఒకే చోట సులభంగా వీక్షించవచ్చు.</p>
+        </div>
+        <div class="p-card" style="border-top-color:#ec4899;">
+          <h3>ప్రాజెక్టులు & సమీక్షలు</h3>
+          <p>ప్రాజెక్టు పనులు, సమీక్షలు, యూనిట్ ప్రణాళికలు, పాఠ్య ప్రణాళికలు మరియు వార్షిక ప్రణాళికల సమగ్ర నిల్వ.</p>
+        </div>
+      </div>
+      <div class="prof">
+        <div class="p-badge">
+          <i class="fa-solid fa-chalkboard-user" style="font-size:48px;margin-bottom:4px;"></i>
+          <b>తెలుగు పండితులు</b>
+        </div>
+        <div>
+          <h2 style="font-family:'Ramabhadra';font-size:24px;">బి. ప్రవీణ్ కుమార్</h2>
+          <p style="color:#0284c7;font-weight:800;">స్కూల్ అసిస్టెంట్ (తెలుగు)</p>
+          <p><b>విద్యార్హతలు:</b> M.A., B.Ed. (తెలుగు సాహిత్యం) | <b>ఫోన్ సంఖ్య:</b> <a href="tel:9908331738" style="color:#0284c7;text-decoration:none;font-weight:700;">9908331738</a></p>
+          <p><b>ప్రత్యేకతలు:</b> హృద్యమైన పద్యాలు, ఆధునిక కవిత్వాలు, విద్యార్థులను ఉత్తేజపరిచే విద్యా గీతాల రచన.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. భాషా అభ్యసనం -->
+    <section id="sec-learning" class="sec">
+      <div style="background:#fff;border-radius:18px;padding:20px;box-shadow:var(--sh);border:2px solid #fed7aa;">
+        <h2 style="font-family:'Ramabhadra';font-size:24px;color:#4b0082;margin-bottom:10px;"><i class="fa-solid fa-volume-high" style="color:#ef4444;"></i> భాషా అభ్యసన శబ్దోచ్ఛారణ ల్యాబ్</h2>
+        <div class="c-box" style="border:none;padding:0;">
+          <button class="c-pill active" onclick="loadLex('varnamala')">వర్ణమాల</button>
+          <button class="c-pill" onclick="loadLex('ottulu')">ఒత్తులు</button>
+          <button class="c-pill" onclick="loadLex('guninthalu')">గుణింతాలు</button>
+          <button class="c-pill" onclick="loadLex('sarala')">సరళ పదాలు (20)</button>
+          <button class="c-pill" onclick="loadLex('dvitva')">ద్విత్వ పదాలు (20)</button>
+          <button class="c-pill" onclick="loadLex('samyukta')">సంయుక్త పదాలు (20)</button>
+          <button class="c-pill" onclick="loadLex('samshlesha')">సంశ్లేష పదాలు (20)</button>
+        </div>
+        <div class="w-grid" id="lexBox"></div>
+      </div>
+    </section>
+
+    <!-- 3. వ్యాకరణం -->
+    <section id="sec-grammar" class="sec">
+      <div style="background:#fff;border-radius:18px;padding:20px;box-shadow:var(--sh);border:2px solid #fde047;">
+        <h2 style="font-family:'Ramabhadra';font-size:24px;margin-bottom:12px;">వ్యాకరణాంశాలు</h2>
+        <div class="c-box">
+          <button class="s-pill active" onclick="switchSub('grammar','sandhulu')">సంధులు</button>
+          <button class="s-pill" onclick="switchSub('grammar','samasalu')">సమాసాలు</button>
+          <button class="s-pill" onclick="switchSub('grammar','chandassu')">ఛందస్సు</button>
+          <button class="s-pill" onclick="switchSub('grammar','alankaralu')">అలంకారాలు</button>
+        </div>
+        <div id="sub-grammar-sandhulu" class="sub-panel active">
+          <div class="ppt"><h3>సంధులు</h3><p>సవర్ణదీర్ఘ, గుణ, ఉత్వ, యడాగమ సంధుల ముఖ్య సూత్రాలు & వివరణ.</p></div>
+          <div class="res-grid" id="grid-grammar-sandhulu"></div>
+        </div>
+        <div id="sub-grammar-samasalu" class="sub-panel">
+          <div class="ppt" style="border-left-color:#8a2be2;"><h3>సమాసాలు</h3><p>ద్వంద్వ, ద్విగు, తత్పురుష, కర్మధారయ సమాసాల ముఖ్యాంశాలు.</p></div>
+          <div class="res-grid" id="grid-grammar-samasalu"></div>
+        </div>
+        <div id="sub-grammar-chandassu" class="sub-panel">
+          <div class="ppt" style="border-left-color:#f59e0b;"><h3>ఛందస్సు</h3><p>ఉత్పలమాల, చంపకమాల, శార్దూలము, మత్తేభము వృత్త పద్యాల లక్షణాలు.</p></div>
+          <div class="res-grid" id="grid-grammar-chandassu"></div>
+        </div>
+        <div id="sub-grammar-alankaralu" class="sub-panel">
+          <div class="ppt" style="border-left-color:#10b981;"><h3>అలంకారాలు</h3><p>ఉపమ, రూపక, ఉత్ప్రేక్ష, వృత్యనుప్రాస, చేకానుప్రాస అలంకారాలు.</p></div>
+          <div class="res-grid" id="grid-grammar-alankaralu"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. పుస్తకాలు & పాఠాలు -->
+    <section id="sec-textbooks" class="sec">
+      <div class="c-box" data-s="textbooks">
+        <button class="c-pill active" onclick="fltCls('textbooks','all')">అన్నీ</button>
+        <button class="c-pill" onclick="fltCls('textbooks','6')">6వ తరగతి</button>
+        <button class="c-pill" onclick="fltCls('textbooks','7')">7వ తరగతి</button>
+        <button class="c-pill" onclick="fltCls('textbooks','8')">8వ తరగతి</button>
+        <button class="c-pill" onclick="fltCls('textbooks','9')">9వ తరగతి</button>
+        <button class="c-pill" onclick="fltCls('textbooks','10')">10వ తరగతి</button>
+      </div>
+      <div class="res-grid" id="grid-textbooks"></div>
+    </section>
+
+    <!-- 5. మాదిరి ప్రశ్నలు -->
+    <section id="sec-exams" class="sec">
+      <div class="c-box" data-s="exams">
+        <button class="c-pill active" onclick="fltCls('exams','all')">అన్నీ</button>
+        <button class="c-pill" onclick="fltCls('exams','6')">6వ తరగతి</button>
+        <button class="c-pill" onclick="fltCls('exams','7')">7వ తరగతి</button>
+        <button class="c-pill" onclick="fltCls('exams','8')">8వ తరగతి</button>
+        <button class="c-pill" onclick="fltCls('exams','9')">9వ తరగతి</button>
+        <button class="c-pill" onclick="fltCls('exams','10')">10వ తరగతి</button>
+      </div>
+      <div class="res-grid" id="grid-exams"></div>
+    </section>
+
+    <!-- 6. క్విజ్ -->
+    <section id="sec-quiz" class="sec">
+      <div class="c-box" data-s="quiz">
+        <button class="c-pill active" onclick="fltCls('quiz','all')">అన్నీ</button>
+        <button class="c-pill" onclick="fltCls('quiz','6')">6వ తరగతి</button>
+        <button class="c-pill" onclick="fltCls('quiz','7')">7వ తరగతి</button>
+        <button class="c-pill" onclick="fltCls('quiz','8')">8వ తరగతి</button>
+        <button class="c-pill" onclick="fltCls('quiz','9')">9వ తరగతి</button>
+        <button class="c-pill" onclick="fltCls('quiz','10')">10వ తరగతి</button>
+      </div>
+      <div class="res-grid" id="grid-quiz"></div>
+    </section>
+
+    <!-- 7. ప్రాజెక్టులు & సమీక్షలు -->
+    <section id="sec-projects" class="sec">
+      <div class="c-box" data-s="projects">
+        <button class="c-pill active" onclick="fltCls('projects','all')">అన్నీ</button>
+        <button class="c-pill" onclick="fltCls('projects','6')">6వ తరగతి</button>
+        <button class="c-pill" onclick="fltCls('projects','7')">7వ తరగతి</button>
+        <button class="c-pill" onclick="fltCls('projects','8')">8వ తరగతి</button>
+        <button class="c-pill" onclick="fltCls('projects','9')">9వ తరగతి</button>
+        <button class="c-pill" onclick="fltCls('projects','10')">10వ తరగతి</button>
+      </div>
+      <div class="c-box">
+        <button class="s-pill active" onclick="switchSub('projects','project-work')">ప్రాజెక్టు పనులు</button>
+        <button class="s-pill" onclick="switchSub('projects','reviews')">సమీక్షలు</button>
+        <button class="s-pill" onclick="switchSub('projects','unit-plans')">యూనిట్ ప్రణాళికలు</button>
+        <button class="s-pill" onclick="switchSub('projects','lesson-plans')">పాఠ్య ప్రణాళికలు</button>
+        <button class="s-pill" onclick="switchSub('projects','year-plans')">వార్షిక ప్రణాళికలు</button>
+      </div>
+      <div id="sub-projects-project-work" class="sub-panel active"><div class="res-grid" id="grid-projects-project-work"></div></div>
+      <div id="sub-projects-reviews" class="sub-panel"><div class="res-grid" id="grid-projects-reviews"></div></div>
+      <div id="sub-projects-unit-plans" class="sub-panel"><div class="res-grid" id="grid-projects-unit-plans"></div></div>
+      <div id="sub-projects-lesson-plans" class="sub-panel"><div class="res-grid" id="grid-projects-lesson-plans"></div></div>
+      <div id="sub-projects-year-plans" class="sub-panel"><div class="res-grid" id="grid-projects-year-plans"></div></div>
+    </section>
+
+    <!-- 8. అదనపు సమాచారం -->
+    <section id="sec-extra" class="sec">
+      <div style="background:#fff;border-radius:18px;padding:20px;box-shadow:var(--sh);border:2px solid #fed7aa;">
+        <h2 style="font-family:'Ramabhadra';font-size:24px;color:#ea580c;margin-bottom:8px;">అదనపు సమాచారం & సర్క్యులర్లు</h2>
+        <p style="color:#64748b;margin-bottom:12px;">సాధారణ మార్గదర్శకాలు, విద్యా సమాచారం, సర్క్యులర్లు మరియు సాహిత్య విశేషాలు.</p>
+        <div class="res-grid" id="grid-extra"></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- రహస్య అడ్మిన్ లాగిన్ మోడల్ -->
+  <div class="modal" id="lgnM">
+    <div class="m-box" style="text-align:center;">
+      <h3 style="margin-bottom:10px;font-size:20px;"><i class="fa-solid fa-lock" style="color:#f59e0b;"></i> రహస్య అడ్మిన్ లాగిన్</h3>
+      <p style="color:#64748b;font-size:14px;margin-bottom:12px;">దయచేసి మీ సెక్యూరిటీ పిన్ ఎంటర్ చేయండి.</p>
+      <input type="password" id="pinIpt" class="f-inp" placeholder="పిన్ నంబర్" style="margin-bottom:12px;">
+      <button class="btn-sub" onclick="auth()" style="background:#1e1b4b;">లాగిన్ అవ్వండి</button>
+      <button onclick="closeM('lgnM')" style="margin-top:8px;background:none;border:none;color:#64748b;cursor:pointer;">రద్దు చేయండి</button>
+    </div>
+  </div>
+
+  <!-- పిన్ మార్పు మోడల్ -->
+  <div class="modal" id="pinM">
+    <div class="m-box">
+      <h3 style="margin-bottom:12px;font-size:20px;"><i class="fa-solid fa-key" style="color:#f59e0b;"></i> అడ్మిన్ పిన్ మార్చండి</h3>
+      <div class="f-grp"><label>ప్రస్తుత పిన్</label><input type="password" id="oldPin" class="f-inp"></div>
+      <div class="f-grp"><label>కొత్త పిన్</label><input type="password" id="newPin" class="f-inp"></div>
+      <button class="btn-sub" onclick="updatePin()">పిన్ మార్పు సేవ్ చేయండి</button>
+      <button onclick="closeM('pinM')" style="margin-top:8px;background:none;border:none;color:#64748b;cursor:pointer;width:100%;">రద్దు</button>
+    </div>
+  </div>
+
+  <!-- అడ్మిన్ అప్‌లోడ్ మోడల్ -->
+  <div class="modal" id="upM">
+    <div class="m-box">
+      <h3 style="margin-bottom:12px;font-size:20px;"><i class="fa-solid fa-cloud-arrow-up" style="color:#0284c7;"></i> శాశ్వత వనరుల అప్‌లోడ్</h3>
+      <form onsubmit="saveRes(event)">
+        <div class="f-grp">
+          <label>ముఖ్య విభాగం</label>
+          <select id="uCat" class="f-inp" onchange="syncUpUI()" required>
+            <option value="textbooks">పుస్తకాలు & డిజిటల్ పాఠాలు</option>
+            <option value="grammar">వ్యాకరణం</option>
+            <option value="exams">మాదిరి ప్రశ్నలు</option>
+            <option value="quiz">క్విజ్</option>
+            <option value="projects">ప్రాజెక్టులు & సమీక్షలు</option>
+            <option value="extra">అదనపు సమాచారం</option>
+          </select>
+        </div>
+        <div class="f-grp" id="gSubBox" style="display:none;">
+          <label style="color:#ea580c;">వ్యాకరణ ఉప-విభాగం</label>
+          <select id="uGSub" class="f-inp">
+            <option value="sandhulu">సంధులు</option><option value="samasalu">సమాసాలు</option><option value="chandassu">ఛందస్సు</option><option value="alankaralu">అలంకారాలు</option>
+          </select>
+        </div>
+        <div class="f-grp" id="pSubBox" style="display:none;">
+          <label style="color:#ea580c;">ప్రణాళికల ఉప-విభాగం</label>
+          <select id="uPSub" class="f-inp">
+            <option value="project-work">ప్రాజెక్టు పనులు</option><option value="reviews">పుస్తక సమీక్షలు</option><option value="unit-plans">యూనిట్ ప్రణాళికలు</option><option value="lesson-plans">పాఠ్య ప్రణాళికలు</option><option value="year-plans">వార్షిక ప్రణాళికలు</option>
+          </select>
+        </div>
+        <div class="f-grp" id="clsBox">
+          <label>తరగతి</label>
+          <select id="uCls" class="f-inp">
+            <option value="6">6వ తరగతి</option><option value="7">7వ తరగతి</option><option value="8">8వ తరగతి</option><option value="9">9వ తరగతి</option><option value="10">10వ తరగతి</option><option value="general">సాధారణం (అందరికీ)</option>
+          </select>
+        </div>
+        <div class="f-grp"><label>అంశం శీర్షిక / పేరు</label><input type="text" id="uTitle" class="f-inp" placeholder="ఉదా: 10వ తరగతి దానశీలము" required></div>
+        <div class="f-grp">
+          <label>అంశం రకం</label>
+          <select id="uType" class="f-inp" onchange="syncTypeUI()" required>
+            <option value="pdf">PDF డాక్యుమెంట్ (డ్రైవ్ / వెబ్ లింక్)</option>
+            <option value="ppt">PPT / స్లైడ్స్ ప్రెజెంటేషన్ (Slides/Drive లింక్)</option>
+            <option value="video">యూట్యూబ్ వీడియో లింక్</option>
+            <option value="link">వెబ్ URL / డ్రైవ్ లింక్</option>
+            <option value="file">కంప్యూటర్ నుండి నేరుగా ఫైల్</option>
+          </select>
+        </div>
+        <div class="f-grp" id="urlInBox">
+          <label>URL / Google Drive / YouTube లింక్</label>
+          <input type="url" id="uUrl" class="f-inp" placeholder="https://drive.google.com/...">
+          <small style="color:#64748b;font-size:12.5px;">* అందరికీ కనిపించడానికి Google Drive, YouTube లింకులు అత్యుత్తమం.</small>
+        </div>
+        <div class="f-grp" id="fileInBox" style="display:none;">
+          <label>ఫైల్ ఎంచుకోండి (PDF, PPT, Image, Doc)</label>
+          <input type="file" id="uFile" class="f-inp" accept=".pdf,.ppt,.pptx,.doc,.docx,image/*">
+        </div>
+        <button type="submit" id="btnSubmitRes" class="btn-sub"><i class="fa-solid fa-check"></i> శాశ్వతంగా భద్రపరచండి</button>
+        <button type="button" onclick="closeM('upM')" style="margin-top:8px;background:none;border:none;color:#64748b;cursor:pointer;width:100%;">రద్దు</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- యూనివర్సల్ వ్యూవర్ మోడల్ -->
+  <div class="modal" id="viewM">
+    <div class="v-card">
+      <div class="v-head">
+        <h4 id="vTitle" style="font-size:17px;color:#1e1b4b;max-width:80%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">ఫైల్ వీక్షణ</h4>
+        <button onclick="closeM('viewM')" style="background:#ef4444;color:#fff;border:none;padding:5px 12px;border-radius:6px;font-weight:700;cursor:pointer;"><i class="fa-solid fa-xmark"></i> మూసివేయి</button>
+      </div>
+      <div class="v-body" id="vBody"></div>
+    </div>
+  </div>
+
+  <script>
+    let db, isAdmin = false;
+    let pin = localStorage.getItem("adm_pin_ultimate_del") || "19011983BPK";
+    const flts = {textbooks:'all', exams:'all', quiz:'all', projects:'all'};
+
+    /* అందరికీ నేరుగా కనిపించే శాశ్వత గ్లోబల్ వనరులు */
+    const defaultMasterResources = [
+      {
+        id: 9001,
+        category: "textbooks",
+        subCategory: "",
+        classGrade: "10",
+        title: "10వ తరగతి ముఖ్య విద్యా వనరు (Google Drive PDF)",
+        type: "pdf",
+        url: "https://drive.google.com/file/d/1ZrndrAwQYrqJS7z2mTaAvv5I0GoxciFz/preview",
+        downloadUrl: "https://drive.google.com/uc?export=download&id=1ZrndrAwQYrqJS7z2mTaAvv5I0GoxciFz",
+        isGlobal: true
+      },
+      {
+        id: 9002,
+        category: "grammar",
+        subCategory: "sandhulu",
+        classGrade: "general",
+        title: "సంధులు - డిజిటల్ ప్రెజెంటేషన్ (PPT / Slides)",
+        type: "ppt",
+        url: "https://docs.google.com/presentation/d/e/2PACX-1vR_sample/embed",
+        downloadUrl: "https://docs.google.com/presentation/d/e/2PACX-1vR_sample/export/pptx",
+        isGlobal: true
+      }
+    ];
+
+    function getDeletedGlobalIds() {
+      try {
+        return JSON.parse(localStorage.getItem("deleted_global_ids") || "[]");
+      } catch(e) { return []; }
+    }
+
+    function initDB() {
+      return new Promise((res, rej) => {
+        const req = indexedDB.open("VidyarthinidhiPermanentDB_Del", 1);
+        req.onupgradeneeded = e => {
+          const d = e.target.result;
+          if (!d.objectStoreNames.contains("resources")) {
+            d.createObjectStore("resources", { keyPath: "id", autoIncrement: true });
+          }
+        };
+        req.onsuccess = e => { db = e.target.result; res(); };
+        req.onerror = rej;
+      });
+    }
+
+    const dbAct = (mode, fn) => new Promise(res => {
+      const tx = db.transaction("resources", mode);
+      const st = tx.objectStore("resources");
+      const r = fn(st);
+      tx.oncomplete = () => res(r?.result);
+    });
+
+    function goSec(id) {
+      document.querySelectorAll('.sec').forEach(s => s.classList.remove('active'));
+      document.querySelectorAll('.n-btn').forEach(b => b.classList.toggle('active', b.dataset.t === id));
+      document.getElementById('sec-' + id).classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function switchSub(p, k) {
+      const el = document.getElementById('sec-' + p);
+      el.querySelectorAll('.s-pill').forEach(b => b.classList.toggle('active', b.getAttribute('onclick').includes(k)));
+      el.querySelectorAll('.sub-panel').forEach(x => x.classList.toggle('active', x.id === `sub-${p}-${k}`));
+    }
+
+    function fltCls(s, c) {
+      flts[s] = c;
+      const b = document.querySelector(`.c-box[data-s="${s}"]`);
+      if (b) b.querySelectorAll('.c-pill').forEach(p => p.classList.toggle('active', p.getAttribute('onclick').includes(`'${c}'`)));
+      s === 'projects' ? renderProj() : renderSec(s);
+    }
+
+    function openM(id) { document.getElementById(id).classList.add('active'); }
+    function closeM(id) { 
+      document.getElementById(id).classList.remove('active'); 
+      if(id === 'viewM') document.getElementById('vBody').innerHTML = '';
+    }
+    function openUpM() { openM('upM'); syncUpUI(); }
+
+    let clks = 0;
+    document.getElementById('admTrig').addEventListener('click', () => {
+      if (++clks >= 3) {
+        clks = 0;
+        openM('lgnM');
+        document.getElementById('pinIpt').focus();
+      }
+    });
+
+    window.addEventListener("keydown", (e) => {
+      if (e.altKey && (e.key === "a" || e.key === "A")) {
+        openM('lgnM');
+        document.getElementById('pinIpt').focus();
+      }
+    });
+
+    function auth() {
+      if (document.getElementById('pinIpt').value === pin) {
+        isAdmin = true;
+        document.body.classList.add('is-admin-logged');
+        closeM('lgnM');
+        document.getElementById('pinIpt').value = '';
+        document.getElementById('adminBar').style.display = 'block';
+        alert("స్వాగతం ప్రవీణ్ కుమార్ గారు! అడ్మిన్ మోడ్ ప్రారంభమైంది.");
+        renderAll();
+      } else { alert("తప్పు పిన్ నంబర్!"); }
+    }
+
+    function logout() { 
+      isAdmin = false; 
+      document.body.classList.remove('is-admin-logged');
+      document.getElementById('adminBar').style.display = 'none'; 
+      alert("అడ్మిన్ లాగౌట్ అయ్యారు."); 
+      renderAll(); 
+    }
+
+    function updatePin() {
+      const o = document.getElementById('oldPin').value, n = document.getElementById('newPin').value;
+      if (o === pin && n.trim()) { 
+        pin = n; 
+        localStorage.setItem("adm_pin_ultimate_del", n); 
+        alert("పిన్ విజయవంతంగా మార్చబడింది!"); 
+        closeM('pinM'); 
+      } else { alert("ప్రస్తుత పిన్ తప్పు లేదా కొత్త పిన్ ఖాళీగా ఉంది!"); }
+    }
+
+    function syncUpUI() {
+      const c = document.getElementById('uCat').value;
+      document.getElementById('gSubBox').style.display = (c === 'grammar') ? 'block' : 'none';
+      document.getElementById('pSubBox').style.display = (c === 'projects') ? 'block' : 'none';
+      document.getElementById('clsBox').style.display = (c === 'grammar' || c === 'extra') ? 'none' : 'block';
+    }
+
+    function syncTypeUI() {
+      const t = document.getElementById('uType').value;
+      const isFile = (t === 'file');
+      document.getElementById('fileInBox').style.display = isFile ? 'block' : 'none';
+      document.getElementById('urlInBox').style.display = isFile ? 'none' : 'block';
+    }
+
+    /* అన్ని రకాల లింకుల కోసం వీక్షణ మరియు డౌన్‌లోడ్ యుటిలిటీ */
+    function formatResourceUrls(url, type) {
+      let preview = url;
+      let download = url;
+
+      if (!url) return { preview: "", download: "" };
+
+      // Google Drive Links
+      const driveMatch = url.match(/\/file\/d\/([a-zA-Z0-9_-]+)/);
+      if (driveMatch && driveMatch[1]) {
+        preview = `https://drive.google.com/file/d/${driveMatch[1]}/preview`;
+        download = `https://drive.google.com/uc?export=download&id=${driveMatch[1]}`;
+        return { preview, download };
+      }
+
+      // Google Slides Links
+      if (url.includes("docs.google.com/presentation")) {
+        const presMatch = url.match(/\/presentation\/d\/([a-zA-Z0-9_-]+)/);
+        if (presMatch && presMatch[1]) {
+          preview = `https://docs.google.com/presentation/d/${presMatch[1]}/embed?start=false&loop=false&delayms=3000`;
+          download = `https://docs.google.com/presentation/d/${presMatch[1]}/export/pptx`;
+          return { preview, download };
+        }
+      }
+
+      // YouTube Links
+      if (url.includes("youtube.com") || url.includes("youtu.be")) {
+        let vidId = "";
+        if (url.includes("youtu.be/")) {
+          vidId = url.split("youtu.be/")[1].split("?")[0];
+        } else if (url.includes("watch?v=")) {
+          vidId = url.split("watch?v=")[1].split("&")[0];
+        }
+        if (vidId) {
+          preview = `https://www.youtube.com/embed/${vidId}`;
+          download = url;
+          return { preview, download };
+        }
+      }
+
+      // ఇతర వెబ్ PDF/DOC/PPT లకు Google Docs Viewer ద్వారా వ్యూవర్
+      if (type === 'pdf' || type === 'ppt' || url.endsWith('.pdf') || url.endsWith('.ppt') || url.endsWith('.pptx')) {
+        preview = `https://docs.google.com/viewer?url=${encodeURIComponent(url)}&embedded=true`;
+      }
+
+      return { preview, download };
+    }
+
+    async function saveRes(e) {
+      e.preventDefault();
+      const btn = document.getElementById('btnSubmitRes');
+      btn.innerText = "భద్రపరుస్తోంది...";
+      btn.disabled = true;
+
+      try {
+        const c = document.getElementById('uCat').value;
+        const sub = (c === 'grammar') ? document.getElementById('uGSub').value : (c === 'projects') ? document.getElementById('uPSub').value : '';
+        const cls = (c === 'grammar' || c === 'extra') ? 'general' : document.getElementById('uCls').value;
+        const title = document.getElementById('uTitle').value.trim();
+        const type = document.getElementById('uType').value;
+        
+        let urlData = "";
+        let rawData = "";
+        let formattedUrls = { preview: "", download: "" };
+
+        if (type === 'file') {
+          const fileInput = document.getElementById('uFile');
+          if (!fileInput.files || fileInput.files.length === 0) {
+            throw new Error("దయచేసి ఫైల్ ఎంచుకోండి!");
+          }
+          const file = fileInput.files[0];
+          rawData = await new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.onload = () => resolve(reader.result);
+            reader.onerror = () => reject(new Error("ఫైల్ చదవడంలో లోపం!"));
+            reader.readAsDataURL(file);
+          });
+        } else {
+          urlData = document.getElementById('uUrl').value.trim();
+          if (!urlData) throw new Error("URL లింక్ నమోదు చేయండి!");
+          formattedUrls = formatResourceUrls(urlData, type);
+        }
+
+        await dbAct("readwrite", st => st.add({
+          category: c,
+          subCategory: sub,
+          classGrade: cls,
+          title: title,
+          type: type,
+          url: formattedUrls.preview || urlData,
+          downloadUrl: formattedUrls.download || urlData,
+          data: rawData,
+          date: new Date().toLocaleDateString('te-IN')
+        }));
+
+        alert("విజయవంతంగా శాశ్వతంగా భద్రపరచబడింది!");
+        closeM('upM');
+        e.target.reset();
+        renderAll();
+      } catch (err) {
+        alert("లోపం: " + err.message);
+      } finally {
+        btn.innerHTML = `<i class="fa-solid fa-check"></i> శాశ్వతంగా భద్రపరచండి`;
+        btn.disabled = false;
+      }
+    }
+
+    async function getAllCombinedResources() {
+      const deletedIds = getDeletedGlobalIds();
+      const activeMasterResources = defaultMasterResources.filter(r => !deletedIds.includes(r.id));
+      const localItems = (await dbAct("readonly", st => st.getAll())) || [];
+      return [...activeMasterResources, ...localItems];
+    }
+
+    async function renderAll() {
+      ['textbooks', 'exams', 'quiz', 'extra'].forEach(renderSec);
+      renderGram();
+      renderProj();
+    }
+
+    async function renderSec(s) {
+      const g = document.getElementById('grid-' + s); if (!g) return;
+      const all = await getAllCombinedResources();
+      const c = flts[s] || 'all';
+      const f = all.filter(r => r.category === s && (c === 'all' || r.classGrade === c));
+      g.innerHTML = f.length ? f.map(buildCard).join('') : `<div style="grid-column:1/-1;text-align:center;color:#64748b;padding:16px;">ఇక్కడ ఇంకా ఎటువంటి అంశాలు లేవు.</div>`;
+    }
+
+    async function renderGram() {
+      const all = await getAllCombinedResources();
+      ['sandhulu', 'samasalu', 'chandassu', 'alankaralu'].forEach(k => {
+        const el = document.getElementById(`grid-grammar-${k}`);
+        if (!el) return;
+        const f = all.filter(r => r.category === 'grammar' && r.subCategory === k);
+        el.innerHTML = f.map(buildCard).join('');
+      });
+    }
+
+    async function renderProj() {
+      const all = await getAllCombinedResources();
+      const c = flts['projects'];
+      ['project-work', 'reviews', 'unit-plans', 'lesson-plans', 'year-plans'].forEach(k => {
+        const el = document.getElementById(`grid-projects-${k}`);
+        if (!el) return;
+        const f = all.filter(r => r.category === 'projects' && r.subCategory === k && (c === 'all' || r.classGrade === c));
+        el.innerHTML = f.length ? f.map(buildCard).join('') : `<div style="grid-column:1/-1;text-align:center;color:#64748b;padding:16px;">ఇక్కడ ఇంకా ఎటువంటి అంశాలు లేవు.</div>`;
+      });
+    }
+
+    /* కార్డ్ నిర్మాణం (వ్యూ, డౌన్‌లోడ్ & డిలీట్) */
+    function buildCard(item) {
+      const isDirectUrl = !!item.url;
+      const iconType = item.type === 'pdf' ? 'file-pdf' : item.type === 'ppt' ? 'file-powerpoint' : item.type === 'video' ? 'video' : 'link';
+
+      return `
+        <div class="card s-item">
+          <div>
+            <div class="c-badge"><i class="fa-solid fa-${iconType}"></i> ${item.type.toUpperCase()} • ${item.classGrade==='general'?'సాధారణం':item.classGrade+'వ తరగతి'}</div>
+            <h4 class="card-title">${item.title}</h4>
+          </div>
+          <div class="c-btns">
+            ${isDirectUrl ? 
+              `<button onclick="viewExternalResource('${item.url}', '${item.type}')" class="btn-v"><i class="fa-solid fa-eye"></i> వ్యూ</button>
+               <a href="${item.downloadUrl || item.url}" target="_blank" download class="btn-d"><i class="fa-solid fa-download"></i> డౌన్‌లోడ్</a>` : 
+              `<button onclick="viewLocalResource(${item.id})" class="btn-v"><i class="fa-solid fa-eye"></i> వ్యూ</button>
+               <button onclick="downloadLocalResource(${item.id})" class="btn-d"><i class="fa-solid fa-download"></i> డౌన్‌లోడ్</button>`}
+            <button onclick="delRes(${item.id}, ${!!item.isGlobal})" class="btn-del" title="తొలగించు"><i class="fa-solid fa-trash"></i> డిలీట్</button>
+          </div>
+        </div>`;
+    }
+
+    /* పూర్తి స్థాయి ఎంబెడెడ్ వ్యూవర్ */
+    function viewExternalResource(url, type) {
+      document.getElementById('vTitle').innerText = "వనరుల వీక్షణ";
+      const body = document.getElementById('vBody');
+
+      let embedUrl = url;
+      if (type === 'video' && !url.includes('embed')) {
+        let vidId = url.includes('youtu.be/') ? url.split('youtu.be/')[1].split('?')[0] : (url.includes('watch?v=') ? url.split('watch?v=')[1].split('&')[0] : '');
+        if (vidId) embedUrl = `https://www.youtube.com/embed/${vidId}`;
+      }
+
+      body.innerHTML = `
+        <iframe src="${embedUrl}" style="width:100%;height:100%;border:none;border-radius:8px;" allow="autoplay; fullscreen" allowfullscreen></iframe>
+        <div style="margin-top:8px;text-align:center;display:flex;gap:10px;justify-content:center;">
+          <a href="${url}" target="_blank" class="btn-v" style="padding:6px 14px;text-decoration:none;">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> పూర్తి పరిమాణంలో తెరవండి
+          </a>
+        </div>`;
+      openM('viewM');
+    }
+
+    async function viewLocalResource(id) {
+      const all = await getAllCombinedResources();
+      const item = all.find(x => x.id === id);
+      if (!item) return alert("ఫైల్ అందుబాటులో లేదు!");
+
+      document.getElementById('vTitle').innerText = item.title;
+      const body = document.getElementById('vBody');
+
+      if (item.data) {
+        if (item.data.startsWith('data:image')) {
+          body.innerHTML = `<img src="${item.data}" style="max-width:100%;max-height:100%;object-fit:contain;border-radius:8px;">`;
+        } else if (item.data.startsWith('data:application/pdf')) {
+          body.innerHTML = `<iframe src="${item.data}" style="width:100%;height:100%;border:none;border-radius:8px;"></iframe>`;
+        } else {
+          body.innerHTML = `
+            <div style="text-align:center;padding:20px;">
+              <p style="margin-bottom:14px;font-weight:700;">ఫైల్ నేరుగా వీక్షించడానికి కింద ఉన్న బటన్ నొక్కండి:</p>
+              <a href="${item.data}" target="_blank" class="btn-v" style="display:inline-flex;padding:10px 18px;text-decoration:none;">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i> కొత్త విండోలో తెరవండి
+              </a>
+            </div>`;
+        }
+      }
+      openM('viewM');
+    }
+
+    async function downloadLocalResource(id) {
+      const all = await getAllCombinedResources();
+      const item = all.find(x => x.id === id);
+      if (!item) return alert("ఫైల్ అందుబాటులో లేదు!");
+
+      if (item.data) {
+        const a = document.createElement('a');
+        a.style.display = 'none';
+        a.href = item.data;
+        let ext = item.data.includes('pdf') ? '.pdf' : item.data.includes('presentation') ? '.pptx' : item.data.includes('image') ? '.jpg' : '.dat';
+        a.download = item.title.replace(/[^\w\u0C00-\u0C7F\s-]/gi, '').trim() + ext;
+        document.body.appendChild(a);
+        a.click();
+        setTimeout(() => document.body.removeChild(a), 500);
+      }
+    }
+
+    async function delRes(id, isGlobal) {
+      if (!isAdmin) {
+        alert("ఈ అంశాన్ని తొలగించే అధికారం కేవలం అడ్మిన్‌కు మాత్రమే కలదు!");
+        return;
+      }
+      if (confirm("ఈ అంశాన్ని ఖచ్చితంగా తొలగించాలనుకుంటున్నారా?")) { 
+        if (isGlobal) {
+          const deletedIds = getDeletedGlobalIds();
+          deletedIds.push(id);
+          localStorage.setItem("deleted_global_ids", JSON.stringify(deletedIds));
+        } else {
+          await dbAct("readwrite", st => st.delete(id)); 
+        }
+        alert("అంశం విజయవంతంగా తొలగించబడింది!");
+        renderAll(); 
+      }
+    }
+
+    /* 20 పదాల నిఘంటువు */
+    const lex = {
+      varnamala: ["అ","ఆ","ఇ","ఈ","ఉ","ఊ","ఋ","ఎ","ఏ","ఐ","ఒ","ఓ","ఔ","అం","అః","క","ఖ","గ","ఘ","చ"],
+      ottulu: ["్క","్గ","్చ","్జ","్ట","్డ","్త","్ద","్న","్ప","్బ","్మ","్య","్ర","్ల","్వ","్శ","్ష","్స","్హ"],
+      guninthalu: ["క","కా","కి","కీ","కు","కూ","కృ","కె","కే","కై","కొ","కో","కౌ","కం","కః","గ","గా","గి","గీ","గు"],
+      sarala: ["అరక","ఆట","ఈల","ఉలవ","ఊయల","ఋషి","ఎలక","ఐదు","ఒంటె","కలశం","గగనం","చవక","జలజ","దవడ","నటన","పడవ","బలపం","మమత","రమ","వల"],
+      dvitva: ["అక్క","చెల్లి","అన్న","అమ్మ","గువ్వ","పిట్ట","మొగ్గ","కప్ప","బస్సు","నిచ్చెన","ముద్ద","రచ్చ","గుడ్డ","పువ్వు","నెయ్యి","గొడ్డలి","అప్పడము","కత్తి","చెట్టు","వెన్న"],
+      samyukta: ["పుస్తకం","మిత్రుడు","వ్యాకరణం","విజ్ఞానం","శక్తి","భక్తి","రత్నం","వస్త్రం","సూర్యుడు","చంద్రుడు","ప్రార్థన","ధర్మం","కర్మ","చక్రం","మంత్రి","యంత్రం","శాస్త్రం","రాష్ట్రం","ముక్తి","వ్యక్తి"],
+      samshlesha: ["జ్యోత్స్న","రాష్ట్రము","శాస్త్రము","స్వాతంత్ర్యము","ఉత్పత్తి","సామ్రాజ్యము","ఈర్ష్య","లక్ష్మి","స్త్రీ","వార్ష్ణేయుడు","మాహాత్మ్యము","కార్త్స్న్యము","ఆర్త్స్యము","ధార్ష్ట్యము","దౌష్ట్యము","పౌష్కల్యము","దైర్ఘ్యము","మౌర్ఖ్యము","సౌభాగ్యము","వైచిత్రత్వము"]
+    };
+
+    function loadLex(k) {
+      document.querySelectorAll('#sec-learning .c-pill').forEach(b => b.classList.toggle('active', b.getAttribute('onclick').includes(k)));
+      document.getElementById('lexBox').innerHTML = (lex[k]||[]).map(w => `
+        <div class="w-card s-item" onclick="speak('${w}')">
+          <b>${w}</b><i class="fa-solid fa-volume-high" style="color:#0284c7;"></i>
+        </div>`).join('');
+    }
+
+    function speak(w) {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        const u = new SpeechSynthesisUtterance(w);
+        u.lang = 'te-IN'; u.rate = 0.8;
+        window.speechSynthesis.speak(u);
+      }
+    }
+
+    function filterLocal(q) {
+      q = q.trim().toLowerCase();
+      document.querySelectorAll('.s-item').forEach(el => el.style.display = (!q || el.innerText.toLowerCase().includes(q)) ? '' : 'none');
+    }
+
+    function runGoogle() {
+      const q = document.getElementById('srchIpt').value.trim();
+      if (q) window.open(`https://www.google.com/search?q=${encodeURIComponent(q + ' site:vidyanidhi.in OR విద్యార్థినిధి')}`, '_blank');
+    }
+
+    window.onload = async () => {
+      await initDB();
+      loadLex('varnamala');
+      renderAll();
+    };
+  </script>
+</body>
+</html>
